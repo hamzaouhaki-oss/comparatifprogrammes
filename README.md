@@ -69,17 +69,38 @@ Les pages se renvoient les unes aux autres à chaque fois que c'est pertinent : 
 
 ## Charte graphique
 
-- **Pages communes** (accueil, contexte, cohérence, axes, angles morts, boîte à outils, sources, en-tête et pied de page partout) : rouge et vert du drapeau marocain, dans deux rôles distincts — rouge pour l'identité du site, vert pour l'axe « comparer par thème » et pour le niveau « élevé » de la grille d'évaluation (rouge = faible, or = moyen, vert = élevé).
-- **Page d'un parti** (`parti.html?id=...`) : reprend la couleur propre à ce parti (bandeau, titres, badges, encadré de tête). L'en-tête et le pied de page, eux, restent toujours dans la charte commune pour ne pas perdre le repère de navigation.
+Inspirée d'interfaces éditoriales sobres (fond blanc et fond noir tous deux volontairement neutres, typographie **Public Sans**, grille aérée) plutôt que d'un style « site politique » classique.
 
-### Emblèmes des partis
+- **Un bandeau à deux niveaux en haut de chaque page** : une fine ligne institutionnelle (« Analyse indépendante · Royaume du Maroc »), puis la navigation principale avec l'emblème du site et les 8 sections. Cet en-tête et le pied de page (qui reprend les mêmes liens) restent identiques sur tout le site, y compris sur les pages de parti, pour ne jamais perdre le repère de navigation.
+- **Rouge et vert du drapeau marocain, toujours utilisés ensemble** sur les éléments de marque (bandeau sous l'en-tête, cartes de la page d'accueil, encadrés « point de repère »/« lecture ») plutôt que l'un sans l'autre sur un même élément — un rappel discret du drapeau plutôt qu'un aplat d'une seule couleur. Le vert sert aussi d'identité à la section « comparer par thème », et les deux couleurs structurent la grille d'évaluation (rouge = faible, or = moyen, vert = élevé).
+- **Une troisième teinte (bleu encre)** est réservée aux chiffres-clés de la page d'accueil, justement pour qu'ils ne soient pas noyés dans le rouge/vert de marque.
+- **Page d'un parti** (`parti.html?id=...`) : reprend la couleur propre à ce parti (bandeau de tête, titres, badges). Là encore, l'en-tête et le pied de page restent neutres.
+- **Emblème du site** : un mark original (carré rouge, étoile verte à 5 branches) qui évoque le drapeau sans reproduire un sceau officiel — ce n'est pas un logo gouvernemental.
 
-Chaque parti a un badge rond coloré avec ses initiales. Pour trois partis — **FFD** (rameau d'olivier), **Alliance de la gauche / PSU-FGD** (bougie du PSU) et **MDS** (palmier) — ce badge est un dessin vectoriel refait à la main d'après leur véritable emblème, plutôt qu'un monogramme.
+### Emblèmes des partis — un point important à lire
 
-**Point important, en toute transparence** : je n'ai pas de moyen fiable, dans cet environnement, de récupérer et vérifier les fichiers *officiels* des logos des partis (droits d'usage incertains, pas d'accès à une source garantie), donc aucun logo affiché ici n'est le fichier officiel du parti. Si vous disposez de vrais logos dont vous avez les droits d'usage, déposez-les dans `assets/logos/` sous le nom `<id>.svg` (ou `.png` si vous n'avez pas de SVG) — le site les affichera automatiquement à la place du badge coloré, aucune modification de code n'est nécessaire. Les identifiants (`<id>`) sont : `rni`, `pam`, `istiqlal`, `usfp`, `mp`, `pps`, `pjd`, `uc`, `ffd`, `gauche`, `mds`.
+Vous m'avez demandé de chercher les vrais logos sur les sites des partis, la presse ou les réseaux sociaux. **Je ne peux pas le faire depuis cet environnement** : j'ai testé l'accès (sites des partis, Wikipédia, Google) et tout est bloqué par la politique réseau de la session — ce n'est pas négociable ni contournable de mon côté, et mes outils de lecture web ne peuvent de toute façon renvoyer que du texte, jamais un fichier image.
+
+À la place, j'ai vérifié — par recherche textuelle, donc factuel et sourcé — le **symbole électoral réel** de chaque parti (le pictogramme attribué à chaque parti sur les bulletins de vote marocains, historiquement pour les électeurs non-alphabétisés), et j'ai redessiné chacun en vectoriel :
+
+| Parti | Symbole électoral réel |
+|---|---|
+| RNI | La colombe |
+| PAM | Le tracteur |
+| Istiqlal | La balance |
+| USFP | La rose |
+| MP | L'épi de blé |
+| PPS | Le livre |
+| PJD | La lampe (le flambeau) |
+| UC | Le cheval |
+| FFD | Le rameau d'olivier |
+| Alliance de la gauche | La bougie (symbole du PSU) |
+| MDS | Le palmier |
+
+Aucun de ces dessins n'est le fichier logo officiel du parti — ce sont mes propres illustrations de leur symbole réel, pas une reproduction de leur charte graphique. Si vous obtenez un jour de vrais fichiers de logo dont vous avez les droits d'usage, déposez-les dans `assets/logos/` sous le nom `<id>.svg` (ou `.png`) — le site les affichera automatiquement à la place, sans toucher au code. Identifiants : `rni`, `pam`, `istiqlal`, `usfp`, `mp`, `pps`, `pjd`, `uc`, `ffd`, `gauche`, `mds`.
 
 ### Couleurs des partis
 
-Les couleurs utilisées pour huit partis (RNI, PAM, Istiqlal, USFP, MP, PPS, PJD, UC) reprennent la couleur officielle indiquée par leur fiche Wikipédia/Wikidata. Pour FFD, l'Alliance de la gauche et le MDS, aucune source publique fiable n'indique de couleur officielle : la couleur retenue est reprise de leur emblème (voir ci-dessus). Ces couleurs sont modifiables dans `js/data.js`, propriété `color` de chaque parti.
+Les couleurs de RNI, PAM, Istiqlal, USFP, MP, PPS, PJD et UC reprennent la couleur officielle indiquée par leur fiche Wikipédia/Wikidata. Pour FFD, l'Alliance de la gauche et le MDS (aucune source publique fiable sur leur couleur officielle), la couleur retenue est reprise de leur symbole électoral ci-dessus. Modifiable dans `js/data.js`, propriété `color` de chaque parti.
 
 Document d'analyse arrêté au 12 septembre 2026. Le site ne recommande aucun vote.

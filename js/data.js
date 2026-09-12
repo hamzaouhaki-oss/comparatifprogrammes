@@ -96,7 +96,7 @@ const PARTIES = [
   {
     id: "rni", acronym: "RNI", name: "Rassemblement national des indépendants",
     category: "majorite", seats2021: 102, leader: "Mohamed Chaouki",
-    color: "#1D6FB8", colorVerified: true,
+    color: "#1D6FB8", colorVerified: true, symbol: "La colombe",
     identity: "Parti libéral de centre-droit, première force en 2021, a dirigé le gouvernement sortant. Changement de direction en février 2026 (Mohamed Chaouki succède à Aziz Akhannouch), sans rupture de ligne.",
     architecture: "Programme 2026-2031 : <strong>3 priorités, 12 mesures</strong> — pouvoir d'achat, services publics, emploi.",
     pari: "La continuité : revendiquer le bilan et proposer d'amplifier ce qui a été lancé.",
@@ -127,7 +127,7 @@ const PARTIES = [
   {
     id: "pam", acronym: "PAM", name: "Parti authenticité et modernité",
     category: "majorite", seats2021: 87, leader: "Direction collégiale (El Mansouri, Bensaïd, Saadi)",
-    color: "#1F2E7A", colorVerified: true,
+    color: "#1F2E7A", colorVerified: true, symbol: "Le tracteur",
     identity: "Deuxième force en 2021, membre de la majorité. Direction collégiale depuis 2024. Plusieurs ralliements médiatisés dont Fouzi Lekjaa.",
     architecture: "Programme dévoilé le 1er septembre 2026, « Pour changer de cap ». <strong>5 pactes, 20 engagements</strong>, enveloppe de <strong>350 MMDH sur 2027-2031</strong>.",
     pari: "Rester dans la majorité tout en réclamant un changement de cap — vise la première place.",
@@ -170,7 +170,7 @@ const PARTIES = [
   {
     id: "istiqlal", acronym: "PI", name: "Parti de l'Istiqlal",
     category: "majorite", seats2021: 81, leader: "Nizar Baraka",
-    color: "#A81F5C", colorVerified: true,
+    color: "#A81F5C", colorVerified: true, symbol: "La balance",
     identity: "Troisième force en 2021, membre de la majorité. Ne cache plus son ambition de diriger le prochain gouvernement.",
     architecture: "Programme 2026-2031, « Watani Moustaqbali » (Ma patrie, mon futur), présenté le 29 août. <strong>5 engagements</strong> plus un dispositif jeunesse transversal.",
     pari: "Combiner discours de valeurs/famille (terrain historique) et offre technique de gouvernance économique.",
@@ -210,7 +210,7 @@ const PARTIES = [
   {
     id: "usfp", acronym: "USFP", name: "Union socialiste des forces populaires",
     category: "opposition", seats2021: 34, leader: "Driss Lachgar",
-    color: "#C21F1F", colorVerified: true,
+    color: "#C21F1F", colorVerified: true, symbol: "La rose",
     identity: "Principale force d'opposition en 2021. Programme présenté le 27 août à Rabat.",
     architecture: "<strong>20 engagements</strong> sous le concept de « développement juste / équitable », présenté comme un contrat évaluable.",
     pari: "Une chaîne causale explicite : politique industrielle → emplois → croissance → revenus.",
@@ -250,7 +250,7 @@ const PARTIES = [
   {
     id: "mp", acronym: "MP", name: "Mouvement populaire",
     category: "opposition", seats2021: 28, leader: "Mohamed Ouzzine",
-    color: "#A6790E", colorVerified: true,
+    color: "#A6790E", colorVerified: true, symbol: "L'épi de blé",
     identity: "Ancrage historique rural et amazigh. Hors de la majorité sortante. Premier grand parti à avoir publié son programme (dès mai 2026).",
     architecture: "« Contrat social », <strong>11 axes et 33 mesures</strong>.",
     pari: "L'État comme service de proximité à décentraliser.",
@@ -288,7 +288,7 @@ const PARTIES = [
   {
     id: "pps", acronym: "PPS", name: "Parti du progrès et du socialisme",
     category: "opposition", seats2021: 22, leader: "Nabil Benabdallah",
-    color: "#0A6FA3", colorVerified: true,
+    color: "#0A6FA3", colorVerified: true, symbol: "Le livre",
     identity: "Dans l'opposition, discours critique du bilan sortant. Programme 2027-2031 publié en ligne.",
     architecture: "Programme de gauche assumé, État social et services publics, logique de moyens massifs.",
     pari: "L'État doit produire les services publics : donc recruter, construire, financer.",
@@ -319,7 +319,7 @@ const PARTIES = [
   {
     id: "pjd", acronym: "PJD", name: "Parti de la justice et du développement",
     category: "opposition", seats2021: 13, leader: "Abdelilah Benkirane",
-    color: "#B85E12", colorVerified: true,
+    color: "#B85E12", colorVerified: true, symbol: "La lampe (le flambeau)",
     identity: "Passé de 125 à 13 sièges en 2021 (plus de 90 % de sa représentation perdue). Programme présenté le 7 septembre 2026 : scrutin existentiel.",
     architecture: "« La croissance durable pour l'emploi » — la création d'emplois comme critère principal d'évaluation économique.",
     pari: "Conditionner l'argent public à des résultats plutôt que promettre des chiffres.",
@@ -351,7 +351,7 @@ const PARTIES = [
   {
     id: "uc", acronym: "UC", name: "Union constitutionnelle",
     category: "opposition", seats2021: 18, leader: "Mohamed Joudar",
-    color: "#8C5A1F", colorVerified: true,
+    color: "#8C5A1F", colorVerified: true, symbol: "Le cheval",
     identity: "Parti libéral fondé en 1983. Programme publié en ligne pour 2026.",
     architecture: "Orientations autour de l'économie productive, du soutien aux entreprises, de l'emploi, des services publics et du développement territorial.",
     pari: "Continuité peu doctrinale.",
@@ -374,7 +374,7 @@ const PARTIES = [
   {
     id: "ffd", acronym: "FFD", name: "Front des forces démocratiques",
     category: "opposition", seats2021: 3, leader: "Mustapha Benali",
-    color: "#5A6B2E", colorVerified: true,
+    color: "#5A6B2E", colorVerified: true, symbol: "Le rameau d'olivier",
     identity: "Positionné à gauche. Candidats sur l'ensemble du territoire, mise en avant de femmes et de jeunes. Ambition : atteindre le seuil du groupe parlementaire.",
     architecture: "« Contrat social fondé sur la dignité, la souveraineté et la justice distributive ». Proportionnellement à sa taille, le programme le plus chiffré de la campagne.",
     pari: "Nommer explicitement une recette fiscale nouvelle.",
@@ -401,7 +401,7 @@ const PARTIES = [
   {
     id: "gauche", acronym: "PSU-FGD", name: "Alliance de la gauche (PSU + FGD)",
     category: "gauche", seats2021: 1, leader: "Jamal El Asri (PSU), Abdessalam El Aziz (FGD)",
-    color: "#C79A1E", colorVerified: true,
+    color: "#C79A1E", colorVerified: true, symbol: "La bougie (PSU)",
     identity: "Alliance conclue en mai 2026 : candidatures communes et programme commun (listes communes sur 63 des 92 circonscriptions locales). Candidatures notables : Nabila Mounib, Houssine El Yamani. Changement notable par rapport à 2021, où la gauche démocratique concourait séparément.",
     architecture: "Six familles de politiques : développement humain, justice sociale, droits et libertés, institutions, transition verte, politique étrangère.",
     pari: "Le problème est la répartition du pouvoir, pas seulement les politiques publiques.",
@@ -430,7 +430,7 @@ const PARTIES = [
   {
     id: "mds", acronym: "MDS", name: "Mouvement démocratique et social",
     category: "opposition", seats2021: 5, leader: "Abdessamad Archane",
-    color: "#2F7A3D", colorVerified: true,
+    color: "#2F7A3D", colorVerified: true, symbol: "Le palmier",
     identity: "Centre droit. Présence sélective (≈60 % des circonscriptions), priorité aux femmes et aux jeunes. Recrutement de personnalités connues, dont l'ancien champion de kick-boxing Mustapha Lakhsem. Objectif annoncé : un groupe parlementaire d'au moins 20 députés (12 sièges considérés comme un succès).",
     architecture: null,
     pari: null,

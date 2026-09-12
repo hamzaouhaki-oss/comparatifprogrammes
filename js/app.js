@@ -51,10 +51,11 @@
   };
   function partyBadge(p, sizeClass) {
     const lenClass = p.acronym.length > 4 ? " len-long" : "";
+    const title = p.symbol ? `Symbole électoral : ${p.symbol}` : p.acronym;
     return (
-      `<span class="party-badge ${sizeClass}${lenClass}" style="--party-accent:${p.color}" aria-hidden="true">` +
-      `${p.acronym}` +
-      `<img class="party-badge-img" src="assets/logos/${p.id}.svg" alt="" onerror="window.__logoFallback(this,'${p.id}','svg')">` +
+      `<span class="party-badge ${sizeClass}${lenClass}" style="--party-accent:${p.color}" title="${title}">` +
+      `<span aria-hidden="true">${p.acronym}</span>` +
+      `<img class="party-badge-img" src="assets/logos/${p.id}.svg" alt="${title}" onerror="window.__logoFallback(this,'${p.id}','svg')">` +
       `</span>`
     );
   }
@@ -142,7 +143,11 @@
     const navHost = $("#navCards");
     navCards.forEach((c, i) => {
       const a = el("a", { class: "nav-card", attrs: { href: c.href } });
-      a.style.setProperty("--card-accent", i % 2 === 0 ? "var(--accent)" : "var(--accent-2)");
+      const primary = i % 2 === 0 ? "var(--accent)" : "var(--accent-2)";
+      const secondary = i % 2 === 0 ? "var(--accent-2)" : "var(--accent)";
+      a.style.setProperty("--card-accent", primary);
+      a.style.setProperty("--card-accent-a", primary);
+      a.style.setProperty("--card-accent-b", secondary);
       a.innerHTML = `<span class="nav-card-emoji" aria-hidden="true">${c.emoji}</span>
         <span class="nav-card-title">${c.title}</span>
         <span class="nav-card-text">${c.text}</span>
@@ -303,7 +308,7 @@
         <span class="cat-tag">${CATEGORY_LABELS[p.category]}</span>
         <h1>${p.acronym}</h1>
         <span class="full-name">${p.name}</span>
-        <span class="seats">${p.seats2021} sièges en 2021${p.leader ? " · " + p.leader : ""}</span>
+        <span class="seats">${p.seats2021} sièges en 2021${p.leader ? " · " + p.leader : ""}${p.symbol ? " · Symbole électoral : " + p.symbol : ""}</span>
       </div>
     </div>`;
     html += `<p>${p.identity}</p>`;
