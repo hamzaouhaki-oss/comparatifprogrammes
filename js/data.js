@@ -319,7 +319,7 @@ const PARTIES_FR = [
   {
     id: "pjd", acronym: "PJD", name: "Parti de la justice et du développement",
     category: "opposition", seats2021: 13, leader: "Abdelilah Benkirane",
-    color: "#B85E12", colorVerified: true, symbol: "La lampe (le flambeau)",
+    color: "#1B3A6B", colorVerified: true, symbol: "La lampe (le flambeau)",
     identity: "Passé de 125 à 13 sièges en 2021 (plus de 90 % de sa représentation perdue). Programme présenté le 7 septembre 2026 : scrutin existentiel.",
     architecture: "« La croissance durable pour l'emploi » — la création d'emplois comme critère principal d'évaluation économique.",
     pari: "Conditionner l'argent public à des résultats plutôt que promettre des chiffres.",
@@ -351,7 +351,7 @@ const PARTIES_FR = [
   {
     id: "uc", acronym: "UC", name: "Union constitutionnelle",
     category: "opposition", seats2021: 18, leader: "Mohamed Joudar",
-    color: "#8C5A1F", colorVerified: true, symbol: "Le cheval",
+    color: "#C87F0A", colorVerified: true, symbol: "Le cheval",
     identity: "Parti libéral fondé en 1983. Programme publié en ligne pour 2026.",
     architecture: "Orientations autour de l'économie productive, du soutien aux entreprises, de l'emploi, des services publics et du développement territorial.",
     pari: "Continuité peu doctrinale.",

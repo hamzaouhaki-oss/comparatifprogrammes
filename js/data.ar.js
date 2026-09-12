@@ -320,7 +320,7 @@ const PARTIES_AR = [
   {
     id: "pjd", acronym: "PJD", name: "حزب العدالة والتنمية",
     category: "opposition", seats2021: 13, leader: "عبد الإله بنكيران",
-    color: "#B85E12", colorVerified: true, symbol: "المصباح",
+    color: "#1B3A6B", colorVerified: true, symbol: "المصباح",
     identity: "انتقل من 125 إلى 13 مقعدا في 2021 (خسارة أكثر من 90% من تمثيليته). برنامج قُدم في 7 شتنبر 2026: استحقاق وجودي.",
     architecture: "«النمو المستدام من أجل الشغل» — جعل خلق مناصب الشغل المعيار الرئيسي لتقييم الأداء الاقتصادي.",
     pari: "ربط المال العام بالنتائج بدل الوعد بأرقام.",
@@ -352,7 +352,7 @@ const PARTIES_AR = [
   {
     id: "uc", acronym: "UC", name: "الاتحاد الدستوري",
     category: "opposition", seats2021: 18, leader: "محمد جودار",
-    color: "#8C5A1F", colorVerified: true, symbol: "الحصان",
+    color: "#C87F0A", colorVerified: true, symbol: "الحصان",
     identity: "حزب ليبرالي تأسس سنة 1983. برنامج منشور عبر الإنترنت خاص بمحطة 2026.",
     architecture: "توجهات تدور حول الاقتصاد المنتج، ودعم المقاولات، والشغل، والخدمات العمومية، والتنمية الترابية.",
     pari: "استمرارية غير عقائدية بشكل واضح.",

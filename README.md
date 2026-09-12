@@ -112,6 +112,6 @@ Aucun de ces dessins n'est le fichier logo officiel du parti — ce sont mes pro
 
 ### Couleurs des partis
 
-Les couleurs de RNI, PAM, Istiqlal, USFP, MP, PPS, PJD et UC reprennent la couleur officielle indiquée par leur fiche Wikipédia/Wikidata. Pour FFD, l'Alliance de la gauche et le MDS (aucune source publique fiable sur leur couleur officielle), la couleur retenue est reprise de leur symbole électoral ci-dessus. Modifiable dans `js/data.js`, propriété `color` de chaque parti.
+Les couleurs de RNI, PAM, Istiqlal, USFP et MP reprennent la couleur officielle indiquée par leur fiche Wikipédia/Wikidata. Pour PJD et UC, la couleur retenue reprend celle des visuels de logo transmis par l'utilisateur (bleu marine + flamme orange pour le PJD, cheval brun-roux pour l'UC). Pour FFD, l'Alliance de la gauche et le MDS (aucune source publique fiable sur leur couleur officielle), la couleur retenue est reprise de leur symbole électoral ci-dessus. Modifiable dans `js/data.js`, propriété `color` de chaque parti.
 
 Document d'analyse arrêté au 12 septembre 2026. Le site ne recommande aucun vote.
