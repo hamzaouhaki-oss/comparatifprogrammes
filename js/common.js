@@ -24,7 +24,7 @@
     return `
       <div class="header-inner">
         <a href="index.html" class="brand">
-          <span class="brand-badge">🗳️</span>
+          <span class="brand-badge">🇲🇦</span>
           <span class="brand-text">
             <strong>Législatives 2026</strong>
             <small>Comparatif des programmes électoraux</small>

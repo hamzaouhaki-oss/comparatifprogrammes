@@ -36,7 +36,27 @@
     return out;
   }
   function partyLink(p) {
-    return `<a href="parti.html?id=${p.id}">${p.acronym}</a>`;
+    return `<a href="parti.html?id=${p.id}">${partyBadge(p, "size-sm")} ${p.acronym}</a>`;
+  }
+  /** Emblème coloré du parti. Essaie d'abord un vrai logo déposé dans assets/logos/{id}.svg puis .png ;
+   *  s'il est absent (404 des deux), retombe silencieusement sur un monogramme dans la couleur du parti.
+   *  Voir README.md pour déposer de vrais logos. */
+  window.__logoFallback = function (img, id, stage) {
+    if (stage === "svg") {
+      img.src = "assets/logos/" + id + ".png";
+      img.setAttribute("onerror", "window.__logoFallback(this,'" + id + "','png')");
+    } else {
+      img.style.display = "none";
+    }
+  };
+  function partyBadge(p, sizeClass) {
+    const lenClass = p.acronym.length > 4 ? " len-long" : "";
+    return (
+      `<span class="party-badge ${sizeClass}${lenClass}" style="--party-accent:${p.color}" aria-hidden="true">` +
+      `${p.acronym}` +
+      `<img class="party-badge-img" src="assets/logos/${p.id}.svg" alt="" onerror="window.__logoFallback(this,'${p.id}','svg')">` +
+      `</span>`
+    );
   }
   const PARTY_ALIASES = {
     rni: ["RNI"],
@@ -120,8 +140,9 @@
       { href: "contexte.html", emoji: "📊", title: "Le contexte du scrutin", text: "L'économie, l'emploi, le social et l'eau, en chiffres." },
     ];
     const navHost = $("#navCards");
-    navCards.forEach((c) => {
+    navCards.forEach((c, i) => {
       const a = el("a", { class: "nav-card", attrs: { href: c.href } });
+      a.style.setProperty("--card-accent", i % 2 === 0 ? "var(--accent)" : "var(--accent-2)");
       a.innerHTML = `<span class="nav-card-emoji" aria-hidden="true">${c.emoji}</span>
         <span class="nav-card-title">${c.title}</span>
         <span class="nav-card-text">${c.text}</span>
@@ -212,7 +233,8 @@
     const list = PARTIES.filter((p) => activeCategory === "all" || p.category === activeCategory);
     list.forEach((p) => {
       const card = el("a", { class: "party-card", attrs: { href: "parti.html?id=" + p.id } });
-      card.innerHTML = `<span class="cat-tag cat-${p.category}">${CATEGORY_LABELS[p.category]}</span>
+      card.style.setProperty("--party-accent", p.color);
+      card.innerHTML = `<div class="party-card-top">${partyBadge(p, "size-md")}<span class="cat-tag">${CATEGORY_LABELS[p.category]}</span></div>
         <span class="acronym">${p.acronym}</span>
         <span class="full-name">${p.name}</span>
         <span class="seats">${p.seats2021} sièges en 2021</span>`;
@@ -272,11 +294,18 @@
       window.location.href = "parti.html?id=" + select.value;
     });
 
+    // scope the party's brand color to the main content only — header/footer stay on the shared charter
+    $("main").style.setProperty("--party-accent", p.color);
+
     let html = "";
-    html += `<span class="cat-tag cat-${p.category}">${CATEGORY_LABELS[p.category]}</span>`;
-    html += `<h1 style="margin:10px 0 2px">${p.acronym}</h1>`;
-    html += `<p class="lead" style="margin-bottom:4px">${p.name}</p>`;
-    html += `<p style="color:var(--text-muted);margin-bottom:18px">${p.seats2021} sièges en 2021${p.leader ? " · " + p.leader : ""}</p>`;
+    html += `<div class="party-hero">${partyBadge(p, "size-lg")}
+      <div class="party-hero-text">
+        <span class="cat-tag">${CATEGORY_LABELS[p.category]}</span>
+        <h1>${p.acronym}</h1>
+        <span class="full-name">${p.name}</span>
+        <span class="seats">${p.seats2021} sièges en 2021${p.leader ? " · " + p.leader : ""}</span>
+      </div>
+    </div>`;
     html += `<p>${p.identity}</p>`;
 
     if (p.notDocumented) {
@@ -313,9 +342,9 @@
     const prev = PARTIES[(idx - 1 + PARTIES.length) % PARTIES.length];
     const next = PARTIES[(idx + 1) % PARTIES.length];
     $("#partyPrevNext").innerHTML = `
-      <a class="prev-next-link prev" href="parti.html?id=${prev.id}"><span>← Précédent</span><strong>${prev.acronym}</strong></a>
+      <a class="prev-next-link prev" href="parti.html?id=${prev.id}"><span>← Précédent</span><strong>${partyBadge(prev, "size-sm")} ${prev.acronym}</strong></a>
       <a class="prev-next-link" href="partis.html">Tous les partis</a>
-      <a class="prev-next-link next" href="parti.html?id=${next.id}"><span>Suivant →</span><strong>${next.acronym}</strong></a>`;
+      <a class="prev-next-link next" href="parti.html?id=${next.id}"><span>Suivant →</span><strong>${next.acronym} ${partyBadge(next, "size-sm")}</strong></a>`;
   }
 
   /* ============================================================
@@ -404,6 +433,9 @@
       { href: "axes.html", label: "Comparer par thème" },
       { label: "Axe " + axis.id },
     ]);
+
+    // les pages d'axes empruntent le vert (charte commune) plutôt que la couleur d'un parti
+    $("main").style.setProperty("--party-accent", "var(--accent-2)");
 
     const select = $("#axisSwitch");
     AXES.forEach((a) => {

@@ -67,4 +67,19 @@ Le site reprend l'intégralité de l'analyse :
 
 Les pages se renvoient les unes aux autres à chaque fois que c'est pertinent : un nom de parti dans un tableau d'axe renvoie à sa fiche, un angle mort renvoie à l'axe concerné, une question de la boîte à outils renvoie à l'axe qu'elle interroge.
 
+## Charte graphique
+
+- **Pages communes** (accueil, contexte, cohérence, axes, angles morts, boîte à outils, sources, en-tête et pied de page partout) : rouge et vert du drapeau marocain, dans deux rôles distincts — rouge pour l'identité du site, vert pour l'axe « comparer par thème » et pour le niveau « élevé » de la grille d'évaluation (rouge = faible, or = moyen, vert = élevé).
+- **Page d'un parti** (`parti.html?id=...`) : reprend la couleur propre à ce parti (bandeau, titres, badges, encadré de tête). L'en-tête et le pied de page, eux, restent toujours dans la charte commune pour ne pas perdre le repère de navigation.
+
+### Emblèmes des partis
+
+Chaque parti a un badge rond coloré avec ses initiales. Pour trois partis — **FFD** (rameau d'olivier), **Alliance de la gauche / PSU-FGD** (bougie du PSU) et **MDS** (palmier) — ce badge est un dessin vectoriel refait à la main d'après leur véritable emblème, plutôt qu'un monogramme.
+
+**Point important, en toute transparence** : je n'ai pas de moyen fiable, dans cet environnement, de récupérer et vérifier les fichiers *officiels* des logos des partis (droits d'usage incertains, pas d'accès à une source garantie), donc aucun logo affiché ici n'est le fichier officiel du parti. Si vous disposez de vrais logos dont vous avez les droits d'usage, déposez-les dans `assets/logos/` sous le nom `<id>.svg` (ou `.png` si vous n'avez pas de SVG) — le site les affichera automatiquement à la place du badge coloré, aucune modification de code n'est nécessaire. Les identifiants (`<id>`) sont : `rni`, `pam`, `istiqlal`, `usfp`, `mp`, `pps`, `pjd`, `uc`, `ffd`, `gauche`, `mds`.
+
+### Couleurs des partis
+
+Les couleurs utilisées pour huit partis (RNI, PAM, Istiqlal, USFP, MP, PPS, PJD, UC) reprennent la couleur officielle indiquée par leur fiche Wikipédia/Wikidata. Pour FFD, l'Alliance de la gauche et le MDS, aucune source publique fiable n'indique de couleur officielle : la couleur retenue est reprise de leur emblème (voir ci-dessus). Ces couleurs sont modifiables dans `js/data.js`, propriété `color` de chaque parti.
+
 Document d'analyse arrêté au 12 septembre 2026. Le site ne recommande aucun vote.
