@@ -462,28 +462,38 @@ const CONSENSUS_FINDINGS = [
 ];
 
 const BLIND_SPOTS = [
-  { title: "Le financement", text: "Un seul parti (FFD) nomme une ressource nouvelle identifiable. Les autres reposent sur la croissance, l'implicite ou le silence." },
-  { title: "Le paramétrage des retraites", text: "Plusieurs promettent la revalorisation ; aucun n'assume l'âge, les cotisations ou le taux de remplacement." },
-  { title: "Le goulot des ressources humaines", text: "On promet de recruter massivement enseignants et soignants sans dire comment on les forme, ni comment on les retient au Maroc et en zone rurale." },
-  { title: "La demande en eau", text: "Consensus sur produire plus, quasi-silence sur consommer moins — alors que l'agriculture est le premier usager." },
-  { title: "L'après-Mondial 2030", text: "Aucune doctrine sur la conversion des emplois de chantier en emplois durables." },
-  { title: "Le ralentissement de 2027", text: "Les programmes sont calibrés sur la bonne année 2026 (≈5 %), alors que le HCP anticipe 3 % dès 2027 : ils seront exécutés dans un contexte moins favorable que celui où ils ont été écrits." },
+  { title: "Le financement", text: "Un seul parti (FFD) nomme une ressource nouvelle identifiable. Les autres reposent sur la croissance, l'implicite ou le silence.", axisRef: 8 },
+  { title: "Le paramétrage des retraites", text: "Plusieurs promettent la revalorisation ; aucun n'assume l'âge, les cotisations ou le taux de remplacement.", axisRef: 3 },
+  { title: "Le goulot des ressources humaines", text: "On promet de recruter massivement enseignants et soignants sans dire comment on les forme, ni comment on les retient au Maroc et en zone rurale.", axisRef: 4 },
+  { title: "La demande en eau", text: "Consensus sur produire plus, quasi-silence sur consommer moins — alors que l'agriculture est le premier usager.", axisRef: 6 },
+  { title: "L'après-Mondial 2030", text: "Aucune doctrine sur la conversion des emplois de chantier en emplois durables.", axisRef: 12 },
+  { title: "Le ralentissement de 2027", text: "Les programmes sont calibrés sur la bonne année 2026 (≈5 %), alors que le HCP anticipe 3 % dès 2027 : ils seront exécutés dans un contexte moins favorable que celui où ils ont été écrits.", axisRef: 8 },
 ];
 
 const TOOLBOX_QUESTIONS = [
-  "Vous promettez X emplois. Dans quel secteur précisément, et pourquoi le rythme passerait de 94 000 en quatre ans à 200 000 par an ?",
-  "Combien coûte votre programme, et quelle recette nouvelle le finance ? (« La croissance » n'est pas une recette : c'est un espoir.)",
-  "Sur les retraites : vous augmentez l'âge, les cotisations, ou vous baissez les pensions ? Il faut au moins un des trois.",
-  "La pension minimale à 3 000 DH coûte environ 54 MMDH pour la seule CNSS. Cela figure-t-il dans votre chiffrage ?",
-  "Vous voulez recruter des milliers d'enseignants et de soignants : où les formez-vous, et comment les gardez-vous en zone rurale ?",
-  "Sur l'eau : une mesure qui réduit la consommation, pas seulement la production ?",
-  "Après le Mondial 2030, combien des emplois créés existent encore en 2032 ?",
-  "Si vous n'obtenez que 15 % des sièges, quelles trois mesures de votre programme sont non négociables dans une coalition ?",
+  { text: "Vous promettez X emplois. Dans quel secteur précisément, et pourquoi le rythme passerait de 94 000 en quatre ans à 200 000 par an ?", axisRef: 1 },
+  { text: "Combien coûte votre programme, et quelle recette nouvelle le finance ? (« La croissance » n'est pas une recette : c'est un espoir.)", axisRef: 8 },
+  { text: "Sur les retraites : vous augmentez l'âge, les cotisations, ou vous baissez les pensions ? Il faut au moins un des trois.", axisRef: 3 },
+  { text: "La pension minimale à 3 000 DH coûte environ 54 MMDH pour la seule CNSS. Cela figure-t-il dans votre chiffrage ?", axisRef: 3 },
+  { text: "Vous voulez recruter des milliers d'enseignants et de soignants : où les formez-vous, et comment les gardez-vous en zone rurale ?", axisRef: 4 },
+  { text: "Sur l'eau : une mesure qui réduit la consommation, pas seulement la production ?", axisRef: 6 },
+  { text: "Après le Mondial 2030, combien des emplois créés existent encore en 2032 ?", axisRef: 12 },
+  { text: "Si vous n'obtenez que 15 % des sièges, quelles trois mesures de votre programme sont non négociables dans une coalition ?", axisRef: null },
+];
+
+const AXIS_GROUPS = [
+  { key: "quotidien", label: "Vie quotidienne", blurb: "Ce qui pèse directement sur le budget et le quotidien des ménages." },
+  { key: "avenir", label: "Avenir et compétences", blurb: "Ce qui prépare les générations qui arrivent." },
+  { key: "ressources", label: "Ressources et territoire", blurb: "Ce que le pays a de rare, et comment il est réparti." },
+  { key: "economie", label: "Économie et finances", blurb: "D'où vient l'argent, et où il va." },
+  { key: "institutions", label: "Institutions et société", blurb: "Comment le pouvoir est exercé et contrôlé." },
+  { key: "evenements", label: "Grands rendez-vous", blurb: "Ce qui engage le pays au-delà d'un mandat." },
 ];
 
 const AXES = [
   {
-    id: 1, title: "Emploi et insertion des jeunes",
+    id: 1, title: "Emploi et insertion des jeunes", group: "quotidien",
+    teaser: "Le sujet numéro un des Marocains — et le plus flou de la campagne.",
     repere: "Environ 94 000 créations nettes en quatre ans, 193 000 en 2025, chômage des 15-24 ans au-dessus de 37 %.",
     rows: [
       ["RNI", "1 million d'emplois, chômage sous 9 %, allocation de retour à l'emploi jusqu'à 12 mois"],
@@ -498,7 +508,8 @@ const AXES = [
     lecture: "Les cibles les plus crédibles ne sont pas les plus élevées. L'USFP est le seul à relier son objectif à un secteur identifié (l'industrie) ; le PJD et le MP proposent des mécanismes (conditionnalité, chèque-formation) plutôt que des chiffres. Le FFD et l'USFP sont les seuls à cibler explicitement l'emploi des femmes.",
   },
   {
-    id: 2, title: "Pouvoir d'achat, salaires et fiscalité des ménages",
+    id: 2, title: "Pouvoir d'achat, salaires et fiscalité des ménages", group: "quotidien",
+    teaser: "Agir sur les prix ou sur les revenus : deux philosophies qui s'opposent nettement.",
     rows: [
       ["RNI", "Indexation de l'ASD sur l'inflation ; épargne abondée (0,25 DH/DH) pour l'informel ; hausse SMIG/SMAG ; crédit d'impôt 5 000 DH/enfant"],
       ["PAM", "Exonération d'IR sous 15 000 DH bruts ; électricité gratuite sous 100 DH/mois ; pension mini 3 000 DH ; aide sociale plancher 1 000 DH"],
@@ -512,7 +523,8 @@ const AXES = [
     lecture: "Deux philosophies s'opposent : <strong>agir sur les prix</strong> (Istiqlal, MP, PJD — peu coûteux, mais risque d'effets pervers si mal calibré) et <strong>agir sur les revenus</strong> (PAM, RNI, PPS, FFD — effet immédiat, mais coût budgétaire élevé et non chiffré). L'indexation de l'ASD sur l'inflation (RNI) est techniquement l'une des mesures les plus solides : elle protège automatiquement 12 millions de personnes.",
   },
   {
-    id: 3, title: "Retraites et soutenabilité de la protection sociale",
+    id: 3, title: "Retraites et soutenabilité de la protection sociale", group: "quotidien",
+    teaser: "L'axe le plus faible de toute la campagne : le grand évitement collectif.",
     repere: "81 % des retraités CNSS (≈680 000) sous 3 000 DH ; coût de mise à niveau ≈54 MMDH ; 60,3 MMDH de déficits cumulés à la CMR ; réforme reportée au prochain gouvernement.",
     rows: [
       ["PAM", "Pension minimale 3 000 DH (non chiffrée)"],
@@ -524,7 +536,8 @@ const AXES = [
     lecture: "L'axe le plus faible de toute la campagne, tous partis confondus. Personne ne dit comment financer la revalorisation, et personne n'assume le volet impopulaire. <strong>C'est la question numéro un à poser à tout candidat.</strong>",
   },
   {
-    id: 4, title: "Santé",
+    id: 4, title: "Santé", group: "quotidien",
+    teaser: "Des murs, des bras ou de l'organisation : trois façons de répondre à la même pénurie.",
     repere: "Budget santé de 19,7 MMDH (2021) à 42,4 MMDH (2026) ; ≈11 millions de bénéficiaires AMO Tadamon ; pénurie structurelle de personnel soignant.",
     rows: [
       ["RNI", "Groupements sanitaires territoriaux, médecin de famille, ≈5 000 agents ruraux, 1 600 structures réhabilitées, 200 nouvelles"],
@@ -538,7 +551,8 @@ const AXES = [
     lecture: "Trois approches : <strong>les murs</strong> (PAM), <strong>les personnes</strong> (PPS, RNI) et <strong>l'organisation</strong> (MP, Istiqlal, USFP). Le mur commun : on ne double pas le personnel soignant en cinq ans, faute de formation suffisante et face à l'émigration. Aucun programme ne traite sérieusement ce goulot.",
   },
   {
-    id: 5, title: "Éducation, formation et recherche",
+    id: 5, title: "Éducation, formation et recherche", group: "avenir",
+    teaser: "L'axe où l'électeur a le plus vrai choix : continuité, rupture doctrinale, ou massification.",
     rows: [
       ["RNI", "Continuité et extension : préscolaire/pionniers généralisés en 2028, lycées en 2031, 12 → 27 universités"],
       ["PAM", "Le quotidien scolaire : préscolaire à 4 ans, 9h de rentrée, 20 min de lecture/jour, dépistages médicaux, socle garanti jusqu'à 15 ans"],
@@ -553,7 +567,8 @@ const AXES = [
     lecture: "L'axe où les différences sont les plus réelles : <strong>continuité</strong> (RNI), <strong>opérationnelle et territoriale</strong> (PAM), <strong>réorientation doctrinale</strong> (PJD), <strong>massification des moyens</strong> (PPS). Deux propositions se distinguent par leur focus sur les apprentissages réels plutôt que la couverture : les 30 élèves/classe de l'USFP et l'objectif PISA/TIMSS du FFD.",
   },
   {
-    id: 6, title: "Eau, climat et énergie",
+    id: 6, title: "Eau, climat et énergie", group: "ressources",
+    teaser: "Consensus total sur produire plus d'eau, quasi-silence sur en consommer moins.",
     repere: "Barrages à 75,86 % en 2026 (contre 23 % en février 2024) ; dessalement de 40 à 350 M m³/an depuis 2021 ; objectif 1,4-1,7 Mrd m³ en 2030.",
     rows: [
       ["RNI", "Barrages, transferts, dessalement, eaux pluviales, irrigation localisée ; autoproduction solaire ; GNL et hydrogène vert"],
@@ -567,7 +582,8 @@ const AXES = [
     lecture: "Consensus quasi total sur l'offre (produire plus d'eau), divergence réelle sur la demande (en consommer moins). Le PPS est le seul à fixer un objectif de réduction de la consommation agricole, l'USFP le seul à cibler les fuites de réseau — les deux propositions les plus lourdes de conséquences, et les moins discutées.",
   },
   {
-    id: 7, title: "Souveraineté économique, industrie et commerce extérieur",
+    id: 7, title: "Souveraineté économique, industrie et commerce extérieur", group: "economie",
+    teaser: "Le mot le plus consensuel de la campagne — et donc le moins informatif.",
     rows: [
       ["USFP", "Contrats sectoriels (agroalimentaire, médicament, renouvelables), +40 % d'exportations industrielles"],
       ["PPS", "Industrie à 20 % du PIB, révision de certains accords de libre-échange, -1/3 d'informel"],
@@ -580,7 +596,8 @@ const AXES = [
     lecture: "La « souveraineté » est le mot le plus consensuel de 2026 — et donc le moins informatif. La vraie ligne de partage : qui accepte de remettre en cause les accords commerciaux existants ? Le PPS le dit explicitement ; l'Istiqlal l'aborde via la préférence nationale dans la commande publique (plus applicable, moins risqué diplomatiquement).",
   },
   {
-    id: 8, title: "Finances publiques et crédibilité budgétaire",
+    id: 8, title: "Finances publiques et crédibilité budgétaire", group: "economie",
+    teaser: "L'axe le plus déterminant de la campagne — et le moins traité.",
     repere: "Déficit ≈3,4 % du PIB en 2026, dette du Trésor ≈65,8 %, charge d'intérêts ≈2,2 % du PIB, croissance retombant à 3 % en 2027 (HCP).",
     rows: [
       ["PAM", "Croissance 5 %, inflation 2 %, déficit 3 % du PIB, dette 62 % en 2031 ; 350 MMDH dont 300 issus de la croissance"],
@@ -592,7 +609,8 @@ const AXES = [
     lecture: "L'axe le plus déterminant et le moins traité. Le PAM mérite crédit pour un cadrage complet — courageux, et ce qui permet de le critiquer précisément. Le FFD mérite crédit pour avoir nommé une recette. Les autres laissent le financement implicite : à l'abri de la critique, mais privant l'électeur de l'information la plus importante.",
   },
   {
-    id: 9, title: "Territoires, ruralité et régionalisation",
+    id: 9, title: "Territoires, ruralité et régionalisation", group: "ressources",
+    teaser: "La régionalisation avancée, chantier officiel depuis 2015, reste en deçà des attentes.",
     rows: [
       ["MP", "Pôles multiservices (>5 000 hab.), contrat de stabilité rurale de 5 ans, Fonds de logement rural, 70 % du budget santé aux régions"],
       ["PAM", "Réduction des disparités territoriales, transport scolaire rural généralisé, 6 sociétés régionales de distribution agricole"],
@@ -605,7 +623,8 @@ const AXES = [
     lecture: "Le MP a l'offre la plus construite, cohérente avec son histoire. Le « contrat de stabilité rurale » attaque la cause du problème (le personnel qualifié ne reste pas en zone rurale), pas son symptôme. Seuls le MP et l'Alliance proposent de donner un contenu budgétaire réel à la régionalisation avancée.",
   },
   {
-    id: 10, title: "Gouvernance, corruption et institutions",
+    id: 10, title: "Gouvernance, corruption et institutions", group: "institutions",
+    teaser: "Des outils juridiques précis d'un côté, un changement de régime de l'autre.",
     rows: [
       ["Istiqlal", "Loi sur les conflits d'intérêts, déclarations de patrimoine élargies, Conseil de la concurrence renforcé, IS à 40 % sur les monopoles, « silence vaut accord »"],
       ["Alliance de la gauche", "Réforme constitutionnelle vers une monarchie parlementaire, séparation des pouvoirs, indépendance de la justice"],
@@ -617,7 +636,8 @@ const AXES = [
     lecture: "Deux registres : l'Istiqlal propose des outils juridiques précis et immédiatement applicables par voie législative — l'offre la plus exécutable de cet axe. L'Alliance propose un changement de régime politique — plus profond, mais hors de portée d'une législature ordinaire.",
   },
   {
-    id: 11, title: "Numérique et intelligence artificielle",
+    id: 11, title: "Numérique et intelligence artificielle", group: "avenir",
+    teaser: "Tout le monde en parle, personne n'en fait un projet structurant.",
     rows: [
       ["PAM", "5 000 spécialistes formés en IA et cybersécurité"],
       ["Istiqlal", "Souveraineté numérique, cybersécurité, IA dans l'apprentissage"],
@@ -630,7 +650,8 @@ const AXES = [
     lecture: "Tout le monde en parle, personne n'en fait un projet structurant. L'IA est traitée comme un ornement de modernité plutôt que comme une politique publique avec un budget, une gouvernance et une cible — un angle mort collectif alors que le sujet touchera l'emploi des jeunes diplômés.",
   },
   {
-    id: 12, title: "Mondial 2030 et grands événements",
+    id: 12, title: "Mondial 2030 et grands événements", group: "evenements",
+    teaser: "Le principal moteur d'investissement public de la législature, presque absent des programmes.",
     rows: [
       ["USFP", "Le Mondial 2030 comme levier explicite de croissance, 500 000 emplois directs et indirects"],
       ["Autres partis", "Mentions générales, sans chiffrage ni doctrine"],
@@ -638,7 +659,8 @@ const AXES = [
     lecture: "L'événement sera le principal moteur d'investissement public de la législature, et il est presque absent des programmes comme objet de politique publique. Question posée par personne : combien des emplois créés survivront à 2031 ? Cet arbitrage — infrastructures événementielles contre capacités productives permanentes — définira largement le bilan du prochain gouvernement.",
   },
   {
-    id: 13, title: "Marocains résidant à l'étranger (MRE)",
+    id: 13, title: "Marocains résidant à l'étranger (MRE)", group: "evenements",
+    teaser: "Un des premiers équilibres de la balance des paiements, traité en second plan.",
     rows: [
       ["Plusieurs formations", "Intègrent la dimension MRE, avec des degrés d'attention très inégaux entre majorité et opposition"],
       ["Proposition notable", "Guichet d'investissement unifié à délais encadrés ; mécanisme « un dirham public pour trois dirhams investis »"],
@@ -648,7 +670,8 @@ const AXES = [
     lecture: "Les transferts des MRE sont l'un des premiers équilibres de la balance des paiements du pays. Le sujet reste traité de façon secondaire par la plupart des programmes.",
   },
   {
-    id: 14, title: "Participation des femmes et des jeunes",
+    id: 14, title: "Participation des femmes et des jeunes", group: "institutions",
+    teaser: "Un des plus grands freins à la croissance, traité par seulement trois partis.",
     rows: [
       ["FFD", "Quota de 33 % femmes/jeunes dans les programmes d'emploi et postes de décision ; activité féminine à 35 %"],
       ["PPS", "Taux d'activité des femmes à 25 %"],
