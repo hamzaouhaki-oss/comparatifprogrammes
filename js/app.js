@@ -20,8 +20,8 @@
     return node;
   };
 
-  const CATEGORY_LABELS = { majorite: "Majorité sortante", opposition: "Opposition", gauche: "Alliance de la gauche" };
-  const LEVEL_LABELS = { 0: "non documenté", 1: "faible", 2: "moyen", 3: "élevé" };
+  const CATEGORY_LABELS = UI.categoryLabels;
+  const LEVEL_LABELS = UI.levelLabels;
 
   function qparam(name) {
     return new URLSearchParams(window.location.search).get(name);
@@ -51,7 +51,7 @@
   };
   function partyBadge(p, sizeClass) {
     const lenClass = p.acronym.length > 4 ? " len-long" : "";
-    const title = p.symbol ? `Symbole électoral : ${p.symbol}` : p.acronym;
+    const title = p.symbol ? `${UI.symbolLabel} : ${p.symbol}` : p.acronym;
     return (
       `<span class="party-badge ${sizeClass}${lenClass}" style="--party-accent:${p.color}" title="${title}">` +
       `<span aria-hidden="true">${p.acronym}</span>` +
@@ -93,7 +93,7 @@
     if (!host) return;
     host.innerHTML = trail
       .map((t, i) => (i === trail.length - 1 ? `<span aria-current="page">${t.label}</span>` : `<a href="${t.href}">${t.label}</a>`))
-      .join(' <span class="crumb-sep">›</span> ');
+      .join(` <span class="crumb-sep">${UI.crumbSep}</span> `);
   }
 
   function pageHero(hostId, eyebrow, title, lead) {
@@ -109,15 +109,8 @@
      PAGE: index.html
      ============================================================ */
   function pageIndex() {
-    const stats = [
-      { value: "395", label: "sièges en jeu" },
-      { value: "27", label: "partis en lice" },
-      { value: "15,8 M", label: "électeurs inscrits" },
-      { value: "23 sept.", label: "jour du scrutin" },
-      { value: "11", label: "programmes analysables" },
-    ];
     const statsHost = $("#heroStats");
-    stats.forEach((s) => {
+    UI.home.stats.forEach((s) => {
       const tile = el("div", { class: "stat-tile" });
       tile.appendChild(el("span", { class: "stat-value", text: s.value }));
       tile.appendChild(el("span", { class: "stat-label", text: s.label }));
@@ -132,16 +125,8 @@
       avantHost.appendChild(card);
     });
 
-    const navCards = [
-      { href: "partis.html", emoji: "🧭", title: "Découvrir les partis", text: "11 programmes analysés fiche par fiche : mesures, points forts, points faibles." },
-      { href: "axes.html", emoji: "⚖️", title: "Comparer par thème", text: "14 axes stratégiques — emploi, retraites, santé, eau, éducation... — parti par parti." },
-      { href: "coherence.html", emoji: "🔎", title: "Vérifier la cohérence", text: "Une grille à 6 critères pour juger si un programme tient debout." },
-      { href: "angles-morts.html", emoji: "🕳️", title: "Les angles morts", text: "Ce que presque aucun programme ne traite sérieusement." },
-      { href: "boite-a-outils.html", emoji: "🗳️", title: "Questions à poser", text: "8 questions à poser à tout candidat qui sonne à votre porte." },
-      { href: "contexte.html", emoji: "📊", title: "Le contexte du scrutin", text: "L'économie, l'emploi, le social et l'eau, en chiffres." },
-    ];
     const navHost = $("#navCards");
-    navCards.forEach((c, i) => {
+    UI.home.navCards.forEach((c, i) => {
       const a = el("a", { class: "nav-card", attrs: { href: c.href } });
       const primary = i % 2 === 0 ? "var(--accent)" : "var(--accent-2)";
       const secondary = i % 2 === 0 ? "var(--accent-2)" : "var(--accent)";
@@ -151,7 +136,7 @@
       a.innerHTML = `<span class="nav-card-emoji" aria-hidden="true">${c.emoji}</span>
         <span class="nav-card-title">${c.title}</span>
         <span class="nav-card-text">${c.text}</span>
-        <span class="nav-card-go">Voir →</span>`;
+        <span class="nav-card-go">${UI.home.navCardGo}</span>`;
       navHost.appendChild(a);
     });
   }
@@ -170,7 +155,7 @@
   }
 
   function pageContexte() {
-    breadcrumb("#breadcrumb", [{ href: "index.html", label: "Accueil" }, { label: "Contexte" }]);
+    breadcrumb("#breadcrumb", [{ href: "index.html", label: UI.crumbHome }, { label: UI.nav.contexte }]);
     tilesInto("#scrutinGrid", CONTEXT.scrutin);
     tilesInto("#economieGrid", CONTEXT.economie);
     tilesInto("#eauGrid", CONTEXT.eau);
@@ -195,16 +180,16 @@
 
     $("#emploiCallout").innerHTML =
       "<p>" + CONTEXT.emploi.intro + "</p><p>" + CONTEXT.emploi.central + "</p><p>" + CONTEXT.emploi.jeunes +
-      ` <a href="axe.html?id=1">Voir l'axe emploi et insertion des jeunes →</a></p>`;
+      ` <a href="axe.html?id=1">${UI.contexte.voirAxeEmploi}</a></p>`;
 
     tilesInto("#socialGrid", CONTEXT.social);
 
     $("#retraitesCallout").innerHTML =
       "<p>" + CONTEXT.retraites.situation + "</p><ul class='note-list' style='margin-top:10px'>" +
       CONTEXT.retraites.chiffres.map((c) => "<li>" + c + "</li>").join("") +
-      `</ul><p><a href="axe.html?id=3">Voir l'axe retraites et protection sociale →</a></p>`;
+      `</ul><p><a href="axe.html?id=3">${UI.contexte.voirAxeRetraites}</a></p>`;
 
-    $("#eauNote").innerHTML = CONTEXT.eauNote + ` <a href="axe.html?id=6">Voir l'axe eau, climat et énergie →</a>`;
+    $("#eauNote").innerHTML = CONTEXT.eauNote + ` <a href="axe.html?id=6">${UI.contexte.voirAxeEau}</a>`;
 
     const defisHost = $("#defisList");
     CONTEXT.defis.forEach((d) => defisHost.appendChild(el("li", { text: d })));
@@ -228,7 +213,7 @@
       });
       return btn;
     };
-    host.appendChild(makeBtn("all", "Tous les partis"));
+    host.appendChild(makeBtn("all", UI.partis.filterAll));
     CATEGORIES.forEach((c) => host.appendChild(makeBtn(c.key, c.label)));
   }
 
@@ -242,9 +227,9 @@
       card.innerHTML = `<div class="party-card-top">${partyBadge(p, "size-md")}<span class="cat-tag">${CATEGORY_LABELS[p.category]}</span></div>
         <span class="acronym">${p.acronym}</span>
         <span class="full-name">${p.name}</span>
-        <span class="seats">${p.seats2021} sièges en 2021</span>`;
+        <span class="seats">${p.seats2021} ${UI.seatsSuffix}</span>`;
       if (p.notDocumented) {
-        card.innerHTML += `<p class="seats" style="margin-top:8px">Programme non documenté — voir détail.</p>`;
+        card.innerHTML += `<p class="seats" style="margin-top:8px">${UI.notDocumentedCard}</p>`;
       } else {
         let dots = `<div class="mini-dots">`;
         CRITERIA.forEach((c) => {
@@ -259,7 +244,7 @@
   }
 
   function pagePartisListe() {
-    breadcrumb("#breadcrumb", [{ href: "index.html", label: "Accueil" }, { label: "Partis" }]);
+    breadcrumb("#breadcrumb", [{ href: "index.html", label: UI.crumbHome }, { label: UI.nav.partis }]);
     renderCategoryFilters();
     renderPartiesGrid();
   }
@@ -280,11 +265,11 @@
   function pagePartiDetail() {
     const id = qparam("id");
     const p = PARTIES.find((x) => x.id === id) || PARTIES[0];
-    document.title = p.acronym + " — " + p.name + " | Législatives 2026";
+    document.title = p.acronym + " — " + p.name + " | " + UI.siteTitleSuffix;
 
     breadcrumb("#breadcrumb", [
-      { href: "index.html", label: "Accueil" },
-      { href: "partis.html", label: "Partis" },
+      { href: "index.html", label: UI.crumbHome },
+      { href: "partis.html", label: UI.nav.partis },
       { label: p.acronym },
     ]);
 
@@ -308,26 +293,26 @@
         <span class="cat-tag">${CATEGORY_LABELS[p.category]}</span>
         <h1>${p.acronym}</h1>
         <span class="full-name">${p.name}</span>
-        <span class="seats">${p.seats2021} sièges en 2021${p.leader ? " · " + p.leader : ""}${p.symbol ? " · Symbole électoral : " + p.symbol : ""}</span>
+        <span class="seats">${p.seats2021} ${UI.seatsSuffix}${p.leader ? " · " + p.leader : ""}${p.symbol ? " · " + UI.symbolLabel + " : " + p.symbol : ""}</span>
       </div>
     </div>`;
     html += `<p>${p.identity}</p>`;
 
     if (p.notDocumented) {
-      html += `<div class="callout"><strong>Non analysable :</strong> ${p.notDocumented}</div>`;
+      html += `<div class="callout"><strong>${UI.parti.notAnalyzableLabel}</strong> ${p.notDocumented}</div>`;
     } else {
-      if (p.architecture) html += `<p><strong>Architecture du programme.</strong> ${p.architecture}</p>`;
-      if (p.pari) html += `<p><strong>Le pari politique.</strong> ${p.pari}</p>`;
+      if (p.architecture) html += `<p><strong>${UI.parti.architectureLabel}</strong> ${p.architecture}</p>`;
+      if (p.pari) html += `<p><strong>${UI.parti.pariLabel}</strong> ${p.pari}</p>`;
 
-      html += `<h2 style="margin-top:1.8em">Mesures principales</h2>`;
+      html += `<h2 style="margin-top:1.8em">${UI.parti.measuresHeading}</h2>`;
       html += renderMeasureList(p.measures);
 
-      if (p.strengths) html += `<h2>Ce qui est fort</h2><div class="strengths">${p.strengths}</div>`;
-      if (p.weaknesses) html += `<h2>Ce qui est faible</h2><div class="weaknesses">${p.weaknesses}</div>`;
+      if (p.strengths) html += `<h2>${UI.parti.strengthsHeading}</h2><div class="strengths">${p.strengths}</div>`;
+      if (p.weaknesses) html += `<h2>${UI.parti.weaknessesHeading}</h2><div class="weaknesses">${p.weaknesses}</div>`;
       if (p.structure) html += `<div class="structure-note">« ${p.structure} »</div>`;
 
-      html += `<h2>Grille d'évaluation</h2>`;
-      html += `<p class="table-note">Voir la <a href="coherence.html">méthode complète</a> et comparer avec les autres partis.</p>`;
+      html += `<h2>${UI.parti.evalHeading}</h2>`;
+      html += `<p class="table-note">${UI.parti.methodNoteBefore} <a href="coherence.html">${UI.parti.methodNoteLink}</a> ${UI.parti.methodNoteAfter}</p>`;
       html += `<div class="score-bars">`;
       CRITERIA.forEach((c) => {
         const lvl = scoreLevel(p.scores[c.key]);
@@ -347,16 +332,16 @@
     const prev = PARTIES[(idx - 1 + PARTIES.length) % PARTIES.length];
     const next = PARTIES[(idx + 1) % PARTIES.length];
     $("#partyPrevNext").innerHTML = `
-      <a class="prev-next-link prev" href="parti.html?id=${prev.id}"><span>← Précédent</span><strong>${partyBadge(prev, "size-sm")} ${prev.acronym}</strong></a>
-      <a class="prev-next-link" href="partis.html">Tous les partis</a>
-      <a class="prev-next-link next" href="parti.html?id=${next.id}"><span>Suivant →</span><strong>${next.acronym} ${partyBadge(next, "size-sm")}</strong></a>`;
+      <a class="prev-next-link prev" href="parti.html?id=${prev.id}"><span>${UI.parti.prev}</span><strong>${partyBadge(prev, "size-sm")} ${prev.acronym}</strong></a>
+      <a class="prev-next-link" href="partis.html">${UI.parti.allParties}</a>
+      <a class="prev-next-link next" href="parti.html?id=${next.id}"><span>${UI.parti.next}</span><strong>${next.acronym} ${partyBadge(next, "size-sm")}</strong></a>`;
   }
 
   /* ============================================================
      PAGE: coherence.html
      ============================================================ */
   function pageCoherence() {
-    breadcrumb("#breadcrumb", [{ href: "index.html", label: "Accueil" }, { label: "Cohérence" }]);
+    breadcrumb("#breadcrumb", [{ href: "index.html", label: UI.crumbHome }, { label: UI.nav.coherence }]);
 
     const critHost = $("#criteriaGrid");
     CRITERIA.forEach((c) => {
@@ -367,7 +352,7 @@
     });
 
     const table = $("#scoreTable");
-    let html = "<thead><tr><th>Parti</th>";
+    let html = `<thead><tr><th>${UI.coherence.tableHeaderParti}</th>`;
     CRITERIA.forEach((c) => (html += `<th>${c.label}</th>`));
     html += "</tr></thead><tbody>";
     PARTIES.forEach((p) => {
@@ -407,7 +392,7 @@
      PAGE: axes.html (liste, groupée)
      ============================================================ */
   function pageAxesListe() {
-    breadcrumb("#breadcrumb", [{ href: "index.html", label: "Accueil" }, { label: "Comparer par thème" }]);
+    breadcrumb("#breadcrumb", [{ href: "index.html", label: UI.crumbHome }, { label: UI.nav.axes }]);
     const host = $("#axesGroups");
     AXIS_GROUPS.forEach((g) => {
       const section = el("div", { class: "axis-group" });
@@ -431,12 +416,12 @@
   function pageAxeDetail() {
     const id = parseInt(qparam("id"), 10) || 1;
     const axis = AXES.find((a) => a.id === id) || AXES[0];
-    document.title = "Axe " + axis.id + " — " + axis.title + " | Législatives 2026";
+    document.title = UI.axe.axisBreadcrumb(axis.id) + " — " + axis.title + " | " + UI.siteTitleSuffix;
 
     breadcrumb("#breadcrumb", [
-      { href: "index.html", label: "Accueil" },
-      { href: "axes.html", label: "Comparer par thème" },
-      { label: "Axe " + axis.id },
+      { href: "index.html", label: UI.crumbHome },
+      { href: "axes.html", label: UI.nav.axes },
+      { label: UI.axe.axisBreadcrumb(axis.id) },
     ]);
 
     // les pages d'axes empruntent le vert (charte commune) plutôt que la couleur d'un parti
@@ -452,35 +437,35 @@
       window.location.href = "axe.html?id=" + select.value;
     });
 
-    let html = `<p class="eyebrow">Axe ${axis.id} / 14</p><h1>${axis.title}</h1>`;
-    if (axis.repere) html += `<div class="callout"><strong>Point de repère.</strong> ${axis.repere}</div>`;
+    let html = `<p class="eyebrow">${UI.axe.axisOf(axis.id)}</p><h1>${axis.title}</h1>`;
+    if (axis.repere) html += `<div class="callout"><strong>${UI.axe.pointDeRepereLabel}</strong> ${axis.repere}</div>`;
     html += `<table class="axis-table">`;
     axis.rows.forEach(([party, text]) => {
       html += `<tr><td class="axis-party">${linkifyPartyLabel(party)}</td><td>${text}</td></tr>`;
     });
     html += `</table>`;
-    html += `<div class="axis-lecture"><strong>Lecture.</strong> ${axis.lecture}</div>`;
+    html += `<div class="axis-lecture"><strong>${UI.axe.lectureLabel}</strong> ${axis.lecture}</div>`;
     $("#axisDetail").innerHTML = html;
 
     const idx = AXES.findIndex((a) => a.id === axis.id);
     const prev = AXES[(idx - 1 + AXES.length) % AXES.length];
     const next = AXES[(idx + 1) % AXES.length];
     $("#axisPrevNext").innerHTML = `
-      <a class="prev-next-link prev" href="axe.html?id=${prev.id}"><span>← Précédent</span><strong>${prev.title}</strong></a>
-      <a class="prev-next-link" href="axes.html">Tous les axes</a>
-      <a class="prev-next-link next" href="axe.html?id=${next.id}"><span>Suivant →</span><strong>${next.title}</strong></a>`;
+      <a class="prev-next-link prev" href="axe.html?id=${prev.id}"><span>${UI.axe.prev}</span><strong>${prev.title}</strong></a>
+      <a class="prev-next-link" href="axes.html">${UI.axe.allAxes}</a>
+      <a class="prev-next-link next" href="axe.html?id=${next.id}"><span>${UI.axe.next}</span><strong>${next.title}</strong></a>`;
   }
 
   /* ============================================================
      PAGE: angles-morts.html
      ============================================================ */
   function pageAnglesMorts() {
-    breadcrumb("#breadcrumb", [{ href: "index.html", label: "Accueil" }, { label: "Angles morts" }]);
+    breadcrumb("#breadcrumb", [{ href: "index.html", label: UI.crumbHome }, { label: UI.nav.anglesMorts }]);
     const host = $("#blindSpotsGrid");
     BLIND_SPOTS.forEach((b) => {
       const card = el("div", { class: "card" });
       card.innerHTML = `<h4>${b.title}</h4><p>${b.text}</p>` +
-        (b.axisRef ? `<a class="card-link" href="axe.html?id=${b.axisRef}">Voir l'axe concerné →</a>` : "");
+        (b.axisRef ? `<a class="card-link" href="axe.html?id=${b.axisRef}">${UI.anglesMorts.voirAxe}</a>` : "");
       host.appendChild(card);
     });
   }
@@ -489,7 +474,7 @@
      PAGE: boite-a-outils.html
      ============================================================ */
   function pageBoiteAOutils() {
-    breadcrumb("#breadcrumb", [{ href: "index.html", label: "Accueil" }, { label: "Questions à poser" }]);
+    breadcrumb("#breadcrumb", [{ href: "index.html", label: UI.crumbHome }, { label: UI.nav.boiteAOutils }]);
     const host = $("#questionsList");
     let checked = {};
     try {
@@ -512,7 +497,7 @@
       label.appendChild(el("span", { text: q.text }));
       li.appendChild(label);
       if (q.axisRef) {
-        const a = el("a", { class: "card-link", text: "Voir l'axe concerné →", attrs: { href: "axe.html?id=" + q.axisRef } });
+        const a = el("a", { class: "card-link", text: UI.boiteAOutils.voirAxe, attrs: { href: "axe.html?id=" + q.axisRef } });
         li.appendChild(a);
       }
       host.appendChild(li);
@@ -527,7 +512,7 @@
   }
 
   function pageSources() {
-    breadcrumb("#breadcrumb", [{ href: "index.html", label: "Accueil" }, { label: "Sources" }]);
+    breadcrumb("#breadcrumb", [{ href: "index.html", label: UI.crumbHome }, { label: UI.nav.sources }]);
 
     const progHost = $("#sourcesProgrammes");
     SOURCES.programmes.forEach((s) => {

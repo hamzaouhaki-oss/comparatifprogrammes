@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<script>(function(){var l=localStorage.getItem("lang")==="ar"?"ar":"fr";document.documentElement.lang=l;document.documentElement.dir=l==="ar"?"rtl":"ltr";})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Comparatif des programmes électoraux — Maroc 2026</title>
 <meta name="description" content="Analyse et comparaison des programmes électoraux des partis politiques marocains pour les législatives du 23 septembre 2026 : cohérence, chiffrage, axes stratégiques.">
 <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Cairo:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-page="index" data-nav="index">
@@ -15,35 +16,37 @@
 <main>
   <section class="section hero">
     <div class="container" id="heroText">
-      <p class="eyebrow">Document arrêté au 12 septembre 2026 — J-11 avant le scrutin</p>
-      <h1>Élections législatives du 23 septembre 2026</h1>
-      <p class="lead">Que proposent les partis marocains ? Leurs promesses tiennent-elles debout ? Et qui propose quoi sur les sujets qui comptent vraiment pour les cinq prochaines années ? Ce site répond aux trois questions, sans dire pour qui voter.</p>
+      <p class="eyebrow" data-i18n="home.eyebrow">Document arrêté au 12 septembre 2026 — J-11 avant le scrutin</p>
+      <h1 data-i18n="home.h1">Élections législatives du 23 septembre 2026</h1>
+      <p class="lead" data-i18n="home.lead">Que proposent les partis marocains ? Leurs promesses tiennent-elles debout ? Et qui propose quoi sur les sujets qui comptent vraiment pour les cinq prochaines années ? Ce site répond aux trois questions, sans dire pour qui voter.</p>
       <div class="hero-stats" id="heroStats"></div>
       <div class="hero-actions">
-        <a href="partis.html" class="btn btn-primary">Explorer les partis</a>
-        <a href="axes.html" class="btn btn-ghost">Comparer par thème</a>
+        <a href="partis.html" class="btn btn-primary" data-i18n="home.exploreBtn">Explorer les partis</a>
+        <a href="axes.html" class="btn btn-ghost" data-i18n="home.compareBtn">Comparer par thème</a>
       </div>
     </div>
   </section>
 
   <section class="section alt">
     <div class="container">
-      <h2>Comment lire ce document</h2>
-      <p class="section-intro">Trois avertissements de méthode, importants avant de lire la suite.</p>
+      <h2 data-i18n="home.howToReadHeading">Comment lire ce document</h2>
+      <p class="section-intro" data-i18n="home.howToReadIntro">Trois avertissements de méthode, importants avant de lire la suite.</p>
       <div class="grid grid-3" id="avantProposGrid"></div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <h2>Explorer l'analyse</h2>
-      <p class="section-intro">Six entrées, selon ce que vous cherchez.</p>
+      <h2 data-i18n="home.exploreHeading">Explorer l'analyse</h2>
+      <p class="section-intro" data-i18n="home.exploreIntro">Six entrées, selon ce que vous cherchez.</p>
       <div class="nav-cards" id="navCards"></div>
     </div>
   </section>
 </main>
 
 <script src="js/data.js"></script>
+<script src="js/data.ar.js"></script>
+<script src="js/i18n.js"></script>
 <script src="js/common.js"></script>
 <script src="js/app.js"></script>
 </body>

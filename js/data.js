@@ -3,9 +3,9 @@
    Source : document d'analyse arrêté au 12 septembre 2026
    =================================================================== */
 
-const DOC_DATE = "12 septembre 2026";
+const DOC_DATE_FR = "12 septembre 2026";
 
-const CONTEXT = {
+const CONTEXT_FR = {
   scrutin: [
     { label: "Date du scrutin", value: "Mercredi 23 septembre 2026" },
     { label: "Sièges en jeu", value: "395 (305 locaux + 90 régionaux)" },
@@ -83,7 +83,7 @@ const CONTEXT = {
 };
 
 /* Scores : 0 = non documenté, 1 = faible (●), 2 = moyen (●●), 3 = élevé (●●●) */
-const CRITERIA = [
+const CRITERIA_FR = [
   { key: "diagnostic", label: "Diagnostic", question: "Le programme part-il d'un constat chiffré et vérifiable ?" },
   { key: "chiffrage", label: "Chiffrage", question: "Les objectifs sont-ils quantifiés ?" },
   { key: "financement", label: "Financement", question: "Le programme dit-il qui paie et avec quel argent ?" },
@@ -92,7 +92,7 @@ const CRITERIA = [
   { key: "arbitrages", label: "Arbitrages difficiles", question: "Aborde-t-il les sujets qui fâchent ?" },
 ];
 
-const PARTIES = [
+const PARTIES_FR = [
   {
     id: "rni", acronym: "RNI", name: "Rassemblement national des indépendants",
     category: "majorite", seats2021: 102, leader: "Mohamed Chaouki",
@@ -443,13 +443,13 @@ const PARTIES = [
   },
 ];
 
-const CATEGORIES = [
+const CATEGORIES_FR = [
   { key: "majorite", label: "Majorité sortante" },
   { key: "opposition", label: "Opposition parlementaire" },
   { key: "gauche", label: "Alliance de la gauche" },
 ];
 
-const CONSENSUS_FINDINGS = [
+const CONSENSUS_FINDINGS_FR = [
   {
     title: "1 — Le chiffrage a progressé ; le financement, non.",
     text: "Les programmes sont beaucoup plus quantifiés qu'en 2021 (PAM : 350 MMDH ; USFP, PPS, FFD : dizaines d'indicateurs). Mais un seul parti sur onze (le FFD) nomme une ressource nouvelle et identifiable. Le PAM s'appuie sur « l'effet de la croissance » à 300 des 350 MMDH — circulaire. Le PPS empile les dépenses sans plan de recettes. <strong>Presque tous répondent à « qu'est-ce qu'on fait ? », très peu à « qui paie ? ».</strong>",
@@ -472,7 +472,7 @@ const CONSENSUS_FINDINGS = [
   },
 ];
 
-const BLIND_SPOTS = [
+const BLIND_SPOTS_FR = [
   { title: "Le financement", text: "Un seul parti (FFD) nomme une ressource nouvelle identifiable. Les autres reposent sur la croissance, l'implicite ou le silence.", axisRef: 8 },
   { title: "Le paramétrage des retraites", text: "Plusieurs promettent la revalorisation ; aucun n'assume l'âge, les cotisations ou le taux de remplacement.", axisRef: 3 },
   { title: "Le goulot des ressources humaines", text: "On promet de recruter massivement enseignants et soignants sans dire comment on les forme, ni comment on les retient au Maroc et en zone rurale.", axisRef: 4 },
@@ -481,7 +481,7 @@ const BLIND_SPOTS = [
   { title: "Le ralentissement de 2027", text: "Les programmes sont calibrés sur la bonne année 2026 (≈5 %), alors que le HCP anticipe 3 % dès 2027 : ils seront exécutés dans un contexte moins favorable que celui où ils ont été écrits.", axisRef: 8 },
 ];
 
-const TOOLBOX_QUESTIONS = [
+const TOOLBOX_QUESTIONS_FR = [
   { text: "Vous promettez X emplois. Dans quel secteur précisément, et pourquoi le rythme passerait de 94 000 en quatre ans à 200 000 par an ?", axisRef: 1 },
   { text: "Combien coûte votre programme, et quelle recette nouvelle le finance ? (« La croissance » n'est pas une recette : c'est un espoir.)", axisRef: 8 },
   { text: "Sur les retraites : vous augmentez l'âge, les cotisations, ou vous baissez les pensions ? Il faut au moins un des trois.", axisRef: 3 },
@@ -492,7 +492,7 @@ const TOOLBOX_QUESTIONS = [
   { text: "Si vous n'obtenez que 15 % des sièges, quelles trois mesures de votre programme sont non négociables dans une coalition ?", axisRef: null },
 ];
 
-const AXIS_GROUPS = [
+const AXIS_GROUPS_FR = [
   { key: "quotidien", label: "Vie quotidienne", blurb: "Ce qui pèse directement sur le budget et le quotidien des ménages." },
   { key: "avenir", label: "Avenir et compétences", blurb: "Ce qui prépare les générations qui arrivent." },
   { key: "ressources", label: "Ressources et territoire", blurb: "Ce que le pays a de rare, et comment il est réparti." },
@@ -501,7 +501,7 @@ const AXIS_GROUPS = [
   { key: "evenements", label: "Grands rendez-vous", blurb: "Ce qui engage le pays au-delà d'un mandat." },
 ];
 
-const AXES = [
+const AXES_FR = [
   {
     id: 1, title: "Emploi et insertion des jeunes", group: "quotidien",
     teaser: "Le sujet numéro un des Marocains — et le plus flou de la campagne.",
@@ -695,7 +695,7 @@ const AXES = [
   },
 ];
 
-const SOURCES = {
+const SOURCES_FR = {
   programmes: [
     { party: "RNI", url: "programme.rni.ma" },
     { party: "PAM", url: "pam.ma/programme-electoral/" },
@@ -728,7 +728,7 @@ const SOURCES = {
   ],
 };
 
-const AVANT_PROPOS = [
+const AVANT_PROPOS_FR = [
   {
     title: "On ne peut pas analyser 27 programmes, parce que 27 programmes n'existent pas.",
     text: "27 partis participent au scrutin, 702 listes déposées. Seule une douzaine de formations a publié un programme suffisamment détaillé pour être analysé : RNI, PAM, Istiqlal, USFP, MP, PPS, PJD, UC, FFD, et l'Alliance de la gauche. Pour les autres, dont le MDS, les documents publics restent au stade des orientations générales.",
@@ -743,4 +743,155 @@ const AVANT_PROPOS = [
   },
 ];
 
-const NOTE_FINALE = "Ce document ne dit pas pour qui voter, et c'est délibéré. Il donne une grille de lecture, des chiffres de référence et des questions à poser. La campagne n'est pas finie : ce document est arrêté au 12 septembre 2026. Aucun programme ne sera appliqué tel quel — le prochain gouvernement sera une coalition, et son programme un compromis négocié. Les points de <strong>convergence</strong> entre programmes sont donc au moins aussi prédictifs que leurs points de différenciation.";
+const NOTE_FINALE_FR = "Ce document ne dit pas pour qui voter, et c'est délibéré. Il donne une grille de lecture, des chiffres de référence et des questions à poser. La campagne n'est pas finie : ce document est arrêté au 12 septembre 2026. Aucun programme ne sera appliqué tel quel — le prochain gouvernement sera une coalition, et son programme un compromis négocié. Les points de <strong>convergence</strong> entre programmes sont donc au moins aussi prédictifs que leurs points de différenciation.";
+
+/* ===================================================================
+   Textes d'interface (chrome, libellés, titres statiques des pages)
+   =================================================================== */
+const UI_FR = {
+  dir: "ltr",
+  htmlLang: "fr",
+  nav: {
+    index: "Accueil",
+    contexte: "Contexte",
+    partis: "Partis",
+    coherence: "Cohérence",
+    axes: "Comparer par thème",
+    anglesMorts: "Angles morts",
+    boiteAOutils: "Questions à poser",
+    sources: "Sources",
+  },
+  masthead: {
+    line1: "Analyse indépendante des programmes électoraux · Royaume du Maroc",
+    line2: "Législatives du 23 septembre 2026",
+  },
+  themeToggleTitle: "Changer le thème",
+  langToggleLabel: "العربية",
+  langToggleTitle: "Afficher le site en arabe",
+  backToTop: "↑ Haut de page",
+  footerNote: "Document d'analyse indépendant, arrêté au 12 septembre 2026. Ce site ne recommande aucun vote.",
+  crumbSep: "›",
+  crumbHome: "Accueil",
+  siteTitleSuffix: "Législatives 2026",
+  siteTagline: "Comparatif des programmes électoraux",
+  categoryLabels: { majorite: "Majorité sortante", opposition: "Opposition", gauche: "Alliance de la gauche" },
+  levelLabels: { 0: "non documenté", 1: "faible", 2: "moyen", 3: "élevé" },
+  symbolLabel: "Symbole électoral",
+  seatsSuffix: "sièges en 2021",
+  notDocumentedCard: "Programme non documenté — voir détail.",
+
+  home: {
+    eyebrow: "Document arrêté au 12 septembre 2026 — J-11 avant le scrutin",
+    h1: "Élections législatives du 23 septembre 2026",
+    lead: "Que proposent les partis marocains ? Leurs promesses tiennent-elles debout ? Et qui propose quoi sur les sujets qui comptent vraiment pour les cinq prochaines années ? Ce site répond aux trois questions, sans dire pour qui voter.",
+    exploreBtn: "Explorer les partis",
+    compareBtn: "Comparer par thème",
+    howToReadHeading: "Comment lire ce document",
+    howToReadIntro: "Trois avertissements de méthode, importants avant de lire la suite.",
+    exploreHeading: "Explorer l'analyse",
+    exploreIntro: "Six entrées, selon ce que vous cherchez.",
+    stats: [
+      { value: "395", label: "sièges en jeu" },
+      { value: "27", label: "partis en lice" },
+      { value: "15,8 M", label: "électeurs inscrits" },
+      { value: "23 sept.", label: "jour du scrutin" },
+      { value: "11", label: "programmes analysables" },
+    ],
+    navCards: [
+      { href: "partis.html", emoji: "🧭", title: "Découvrir les partis", text: "11 programmes analysés fiche par fiche : mesures, points forts, points faibles." },
+      { href: "axes.html", emoji: "⚖️", title: "Comparer par thème", text: "14 axes stratégiques — emploi, retraites, santé, eau, éducation... — parti par parti." },
+      { href: "coherence.html", emoji: "🔎", title: "Vérifier la cohérence", text: "Une grille à 6 critères pour juger si un programme tient debout." },
+      { href: "angles-morts.html", emoji: "🕳️", title: "Les angles morts", text: "Ce que presque aucun programme ne traite sérieusement." },
+      { href: "boite-a-outils.html", emoji: "🗳️", title: "Questions à poser", text: "8 questions à poser à tout candidat qui sonne à votre porte." },
+      { href: "contexte.html", emoji: "📊", title: "Le contexte du scrutin", text: "L'économie, l'emploi, le social et l'eau, en chiffres." },
+    ],
+    navCardGo: "Voir →",
+  },
+
+  contexte: {
+    h1: "Le cadre : dans quel Maroc ces programmes atterrissent-ils ?",
+    lead: "Sans ce cadre, les promesses sont illisibles. Un million d'emplois, ça ne veut rien dire si on ne sait pas combien d'emplois le pays crée réellement aujourd'hui.",
+    scrutinHeading: "Le scrutin en bref",
+    seatsHeading: "Répartition des sièges — point de départ (2021)",
+    economieHeading: "L'économie : une bonne année dans une décennie moyenne",
+    emploiHeading: "L'emploi : le chiffre le plus important de la campagne",
+    socialHeading: "Le social : un édifice construit, pas encore payé",
+    retraitesHeading: "Retraites : le problème non résolu",
+    eauHeading: "L'eau : un répit, pas une solution",
+    defisHeading: "Les huit défis des cinq prochaines années",
+    voirAxeEmploi: "Voir l'axe emploi et insertion des jeunes →",
+    voirAxeRetraites: "Voir l'axe retraites et protection sociale →",
+    voirAxeEau: "Voir l'axe eau, climat et énergie →",
+  },
+
+  partis: {
+    h1: "Programme par programme",
+    lead: "Sur 27 partis en lice, 11 ont publié un programme suffisamment détaillé pour être analysé. Cliquez sur un parti pour voir son architecture, ses mesures principales, ses points forts et ses points faibles.",
+    filterAll: "Tous les partis",
+  },
+
+  parti: {
+    switchLabel: "Aller directement à un autre parti :",
+    architectureLabel: "Architecture du programme.",
+    pariLabel: "Le pari politique.",
+    measuresHeading: "Mesures principales",
+    strengthsHeading: "Ce qui est fort",
+    weaknessesHeading: "Ce qui est faible",
+    evalHeading: "Grille d'évaluation",
+    methodNoteBefore: "Voir la",
+    methodNoteLink: "méthode complète",
+    methodNoteAfter: "et comparer avec les autres partis.",
+    notAnalyzableLabel: "Non analysable :",
+    prev: "← Précédent",
+    next: "Suivant →",
+    allParties: "Tous les partis",
+  },
+
+  coherence: {
+    h1: "Cohérence et profondeur : les programmes tiennent-ils debout ?",
+    lead: "Six critères, appliqués de façon identique à tous les partis.",
+    tableHeading: "Tableau d'évaluation",
+    tableNote: "Il ne dit pas quel parti est « le meilleur ». Il dit où chaque offre est solide et où elle est fragile — cliquez sur un parti pour voir sa fiche complète.",
+    tableHeaderParti: "Parti",
+    findingsHeading: "Cinq constats de cohérence",
+    structureHeading: "Ce que révèle la structure des programmes",
+    structureIntro: "Au-delà des mesures, la façon dont un programme est construit dit quelque chose de la conception du pouvoir qu'il porte.",
+  },
+
+  axesListe: {
+    h1: "Comparaison par axes stratégiques",
+    lead: "Les axes retenus le sont en fonction de leur importance pour le Maroc des cinq prochaines années — pas en fonction de la place qu'ils occupent dans les campagnes. Choisissez un thème.",
+  },
+
+  axe: {
+    switchLabel: "Aller directement à un autre axe :",
+    axisOf: (n) => `Axe ${n} / 14`,
+    axisBreadcrumb: (n) => `Axe ${n}`,
+    pointDeRepereLabel: "Point de repère.",
+    lectureLabel: "Lecture.",
+    prev: "← Précédent",
+    next: "Suivant →",
+    allAxes: "Tous les axes",
+  },
+
+  anglesMorts: {
+    h1: "Les six angles morts communs",
+    lead: "Ce que presque aucun programme ne traite sérieusement — tous partis confondus.",
+    voirAxe: "Voir l'axe concerné →",
+  },
+
+  boiteAOutils: {
+    h1: "Boîte à outils du citoyen",
+    lead: "Huit questions à poser à n'importe quel candidat, dans n'importe quelle circonscription. Elles fonctionnent parce qu'elles ne demandent pas des intentions, mais des mécanismes. Cochez celles auxquelles vous avez déjà une réponse satisfaisante — c'est gardé en mémoire sur cet appareil.",
+    voirAxe: "Voir l'axe concerné →",
+  },
+
+  sources: {
+    h1: "Sources",
+    lead: "Programmes officiels des partis, sources institutionnelles et presse ayant servi à cette analyse.",
+    hProgrammes: "Programmes officiels des partis",
+    hInstitutionnelles: "Sources institutionnelles",
+    hPresse: "Presse et analyses",
+    hNoteFinale: "Note finale",
+  },
+};

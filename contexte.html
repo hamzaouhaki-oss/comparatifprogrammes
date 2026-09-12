@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<script>(function(){var l=localStorage.getItem("lang")==="ar"?"ar":"fr";document.documentElement.lang=l;document.documentElement.dir=l==="ar"?"rtl":"ltr";})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Le contexte du scrutin — Comparatif 2026</title>
 <meta name="description" content="Le cadre économique et social 2026 pour comprendre les programmes électoraux : emploi, retraites, eau, social.">
 <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Cairo:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-page="contexte" data-nav="contexte">
@@ -17,17 +18,17 @@
 <main>
   <section class="section page-head">
     <div class="container">
-      <h1>Le cadre : dans quel Maroc ces programmes atterrissent-ils ?</h1>
-      <p class="lead">Sans ce cadre, les promesses sont illisibles. Un million d'emplois, ça ne veut rien dire si on ne sait pas combien d'emplois le pays crée réellement aujourd'hui.</p>
+      <h1 data-i18n="contexte.h1">Le cadre : dans quel Maroc ces programmes atterrissent-ils ?</h1>
+      <p class="lead" data-i18n="contexte.lead">Sans ce cadre, les promesses sont illisibles. Un million d'emplois, ça ne veut rien dire si on ne sait pas combien d'emplois le pays crée réellement aujourd'hui.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <h2>Le scrutin en bref</h2>
+      <h2 data-i18n="contexte.scrutinHeading">Le scrutin en bref</h2>
       <div class="grid grid-4" id="scrutinGrid"></div>
 
-      <h3>Répartition des sièges — point de départ (2021)</h3>
+      <h3 data-i18n="contexte.seatsHeading">Répartition des sièges — point de départ (2021)</h3>
       <div id="seatsChart" class="seats-chart"></div>
 
       <div class="callout" id="jeunesseCallout"></div>
@@ -36,7 +37,7 @@
 
   <section class="section alt">
     <div class="container">
-      <h2>L'économie : une bonne année dans une décennie moyenne</h2>
+      <h2 data-i18n="contexte.economieHeading">L'économie : une bonne année dans une décennie moyenne</h2>
       <div class="grid grid-4" id="economieGrid"></div>
       <ul class="note-list" id="economieNuances"></ul>
     </div>
@@ -44,24 +45,24 @@
 
   <section class="section">
     <div class="container">
-      <h2>L'emploi : le chiffre le plus important de la campagne</h2>
+      <h2 data-i18n="contexte.emploiHeading">L'emploi : le chiffre le plus important de la campagne</h2>
       <div class="callout callout-strong" id="emploiCallout"></div>
     </div>
   </section>
 
   <section class="section alt">
     <div class="container">
-      <h2>Le social : un édifice construit, pas encore payé</h2>
+      <h2 data-i18n="contexte.socialHeading">Le social : un édifice construit, pas encore payé</h2>
       <div class="grid grid-3" id="socialGrid"></div>
 
-      <h3>Retraites : le problème non résolu</h3>
+      <h3 data-i18n="contexte.retraitesHeading">Retraites : le problème non résolu</h3>
       <div class="callout" id="retraitesCallout"></div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <h2>L'eau : un répit, pas une solution</h2>
+      <h2 data-i18n="contexte.eauHeading">L'eau : un répit, pas une solution</h2>
       <div class="grid grid-4" id="eauGrid"></div>
       <div class="callout" id="eauNote"></div>
     </div>
@@ -69,13 +70,15 @@
 
   <section class="section alt">
     <div class="container">
-      <h2>Les huit défis des cinq prochaines années</h2>
+      <h2 data-i18n="contexte.defisHeading">Les huit défis des cinq prochaines années</h2>
       <ol class="defis-list" id="defisList"></ol>
     </div>
   </section>
 </main>
 
 <script src="js/data.js"></script>
+<script src="js/data.ar.js"></script>
+<script src="js/i18n.js"></script>
 <script src="js/common.js"></script>
 <script src="js/app.js"></script>
 </body>

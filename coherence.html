@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<script>(function(){var l=localStorage.getItem("lang")==="ar"?"ar":"fr";document.documentElement.lang=l;document.documentElement.dir=l==="ar"?"rtl":"ltr";})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cohérence des programmes — Comparatif 2026</title>
 <meta name="description" content="Les programmes tiennent-ils debout ? Grille d'évaluation à 6 critères et constats transversaux sur les 11 partis analysés.">
 <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Cairo:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-page="coherence" data-nav="coherence">
@@ -17,16 +18,16 @@
 <main>
   <section class="section page-head">
     <div class="container">
-      <h1>Cohérence et profondeur : les programmes tiennent-ils debout ?</h1>
-      <p class="lead">Six critères, appliqués de façon identique à tous les partis.</p>
+      <h1 data-i18n="coherence.h1">Cohérence et profondeur : les programmes tiennent-ils debout ?</h1>
+      <p class="lead" data-i18n="coherence.lead">Six critères, appliqués de façon identique à tous les partis.</p>
       <div class="grid grid-3" id="criteriaGrid"></div>
     </div>
   </section>
 
   <section class="section alt">
     <div class="container">
-      <h2>Tableau d'évaluation</h2>
-      <p class="table-note">Il ne dit pas quel parti est « le meilleur ». Il dit où chaque offre est solide et où elle est fragile — cliquez sur un parti pour voir sa fiche complète.</p>
+      <h2 data-i18n="coherence.tableHeading">Tableau d'évaluation</h2>
+      <p class="table-note" data-i18n="coherence.tableNote">Il ne dit pas quel parti est « le meilleur ». Il dit où chaque offre est solide et où elle est fragile — cliquez sur un parti pour voir sa fiche complète.</p>
       <div class="table-scroll">
         <table class="score-table" id="scoreTable"></table>
       </div>
@@ -36,21 +37,23 @@
 
   <section class="section">
     <div class="container">
-      <h2>Cinq constats de cohérence</h2>
+      <h2 data-i18n="coherence.findingsHeading">Cinq constats de cohérence</h2>
       <div class="stack" id="consensusFindings"></div>
     </div>
   </section>
 
   <section class="section alt">
     <div class="container">
-      <h2>Ce que révèle la structure des programmes</h2>
-      <p class="section-intro">Au-delà des mesures, la façon dont un programme est construit dit quelque chose de la conception du pouvoir qu'il porte.</p>
+      <h2 data-i18n="coherence.structureHeading">Ce que révèle la structure des programmes</h2>
+      <p class="section-intro" data-i18n="coherence.structureIntro">Au-delà des mesures, la façon dont un programme est construit dit quelque chose de la conception du pouvoir qu'il porte.</p>
       <div class="grid grid-2" id="structureGrid"></div>
     </div>
   </section>
 </main>
 
 <script src="js/data.js"></script>
+<script src="js/data.ar.js"></script>
+<script src="js/i18n.js"></script>
 <script src="js/common.js"></script>
 <script src="js/app.js"></script>
 </body>

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<script>(function(){var l=localStorage.getItem("lang")==="ar"?"ar":"fr";document.documentElement.lang=l;document.documentElement.dir=l==="ar"?"rtl":"ltr";})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boîte à outils du citoyen — Comparatif 2026</title>
 <meta name="description" content="8 questions à poser à tout candidat, dans n'importe quelle circonscription, pour aller au-delà des intentions.">
 <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Cairo:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-page="boite-a-outils" data-nav="boite-a-outils">
@@ -17,8 +18,8 @@
 <main>
   <section class="section page-head">
     <div class="container">
-      <h1>Boîte à outils du citoyen</h1>
-      <p class="lead">Huit questions à poser à n'importe quel candidat, dans n'importe quelle circonscription. Elles fonctionnent parce qu'elles ne demandent pas des intentions, mais des mécanismes. Cochez celles auxquelles vous avez déjà une réponse satisfaisante — c'est gardé en mémoire sur cet appareil.</p>
+      <h1 data-i18n="boiteAOutils.h1">Boîte à outils du citoyen</h1>
+      <p class="lead" data-i18n="boiteAOutils.lead">Huit questions à poser à n'importe quel candidat, dans n'importe quelle circonscription. Elles fonctionnent parce qu'elles ne demandent pas des intentions, mais des mécanismes. Cochez celles auxquelles vous avez déjà une réponse satisfaisante — c'est gardé en mémoire sur cet appareil.</p>
     </div>
   </section>
 
@@ -30,6 +31,8 @@
 </main>
 
 <script src="js/data.js"></script>
+<script src="js/data.ar.js"></script>
+<script src="js/i18n.js"></script>
 <script src="js/common.js"></script>
 <script src="js/app.js"></script>
 </body>

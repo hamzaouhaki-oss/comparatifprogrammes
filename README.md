@@ -44,15 +44,26 @@ sources.html           → Sources primaires, institutionnelles et presse
 Fichiers techniques communs à toutes les pages :
 
 ```
-css/styles.css   → mise en forme visuelle (couleurs, thème clair/sombre, mise en page)
-js/data.js       → tout le contenu (partis, chiffres, axes de comparaison, sources...)
+css/styles.css   → mise en forme visuelle (couleurs, thème clair/sombre, RTL, mise en page)
+js/data.js       → tout le contenu en français (partis, chiffres, axes, sources, textes d'interface)
+js/data.ar.js    → la traduction arabe complète, même structure, suffixe _AR
+js/i18n.js       → choisit FR ou AR selon la préférence enregistrée, applique le sens de lecture
 js/common.js     → en-tête, menu, pied de page (identiques sur toutes les pages)
-js/app.js        → génère le contenu de chaque page à partir de js/data.js
+js/app.js        → génère le contenu de chaque page à partir des données dans la langue active
 ```
 
 ## Mettre à jour le contenu
 
-Tout le texte affiché sur le site vient du fichier **`js/data.js`**. Pour corriger un chiffre, ajouter un parti ou modifier une analyse, il suffit de modifier ce fichier (c'est un fichier texte, lisible sans compétence en programmation) puis de recharger la page dans le navigateur — aucune compilation n'est nécessaire. Les pages qui listent les partis ou les axes (`partis.html`, `axes.html`, les tableaux de `coherence.html`...) se mettent à jour automatiquement.
+Tout le texte affiché sur le site vient des fichiers **`js/data.js`** (français) et **`js/data.ar.js`** (arabe). Pour corriger un chiffre, ajouter un parti ou modifier une analyse, modifiez l'entrée correspondante dans les deux fichiers (ce sont des fichiers texte, lisibles sans compétence en programmation) puis rechargez la page — aucune compilation n'est nécessaire. Les pages qui listent les partis ou les axes (`partis.html`, `axes.html`, les tableaux de `coherence.html`...) se mettent à jour automatiquement.
+
+## Site bilingue (français / عربي)
+
+Un bouton en haut de chaque page (à côté du sélecteur de thème) bascule tout le site — contenu, navigation et sens de lecture — entre le français et l'arabe. Le choix est mémorisé sur l'appareil (comme le thème clair/sombre) et s'applique immédiatement à la page suivante consultée.
+
+- **Traduction complète et professionnelle**, pas une traduction automatique mot à mot : les 11 fiches de partis, les 14 axes, le contexte, les constats, les angles morts, la boîte à outils et tous les libellés de l'interface existent intégralement dans `js/data.ar.js`, avec une terminologie politique et économique appropriée à l'arabe standard moderne.
+- **Mise en page adaptée (RTL)** : en arabe, toute la page s'inverse (navigation, fil d'Ariane, précédent/suivant, barres de score, listes) — ce n'est pas seulement le texte qui change de langue, c'est le sens de lecture de l'interface entière. Les acronymes latins des partis (RNI, PJD...) restent volontairement en écriture occidentale au milieu du texte arabe, comme c'est l'usage dans la presse marocaine.
+- **Police adaptée** : l'arabe utilise la police Cairo (Google Fonts), pensée pour rester lisible à l'écran ; le français garde Public Sans.
+- **Pour ajouter ou corriger une traduction** : chaque entrée de `js/data.ar.js` porte le même nom que son équivalent français avec le suffixe `_AR` (ex. `PARTIES_FR` / `PARTIES_AR`), dans le même ordre et la même structure — il suffit de comparer les deux fichiers côte à côte. Les textes d'interface (boutons, titres de section, libellés) sont regroupés dans `UI_FR` / `UI_AR` à la fin de chaque fichier.
 
 ## Contenu
 
