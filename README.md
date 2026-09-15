@@ -114,4 +114,16 @@ Aucun de ces dessins n'est le fichier logo officiel du parti — ce sont mes pro
 
 Les couleurs de RNI, PAM, Istiqlal, USFP et MP reprennent la couleur officielle indiquée par leur fiche Wikipédia/Wikidata. Pour PJD et UC, la couleur retenue reprend celle des visuels de logo transmis par l'utilisateur (bleu marine + flamme orange pour le PJD, cheval brun-roux pour l'UC). Pour FFD, l'Alliance de la gauche et le MDS (aucune source publique fiable sur leur couleur officielle), la couleur retenue est reprise de leur symbole électoral ci-dessus. Modifiable dans `js/data.js`, propriété `color` de chaque parti.
 
-Document d'analyse arrêté au 12 septembre 2026. Le site ne recommande aucun vote.
+## Mise à jour du 14 septembre 2026
+
+Le contenu a été entièrement révisé à partir d'une nouvelle version de l'analyse. Ce qui a changé :
+
+- **Correction de classement** : l'UC et le MDS sont désormais rattachés à la **majorité** (les deux formations avaient rejoint la majorité gouvernementale en cours de législature ; elles étaient classées dans l'opposition).
+- **Trois programmes nouvellement documentés** : le PPS (2 septembre, le seul programme entièrement chiffré de la campagne), l'UC (7 septembre) et le « Contrat haraki » du MP.
+- **Notes révisées** : le PPS passe de ● à ●●● en « financement » après publication de son compte complet dépenses/recettes.
+- **Nouveaux éléments sur chaque fiche de parti** : slogan, date de présentation du programme, lien vers le programme officiel, résumé éditorial, repères factuels en puces, et — pour le PPS — le détail de son compte (575 MMDH de dépenses / 622 MMDH de recettes).
+- **Nouvelles sections** : bandeau « Nouveautés » sur l'accueil, les 11 grands chantiers nationaux de référence sur la page cohérence, les formations sans programme comparable sur la page partis, et un droit de réponse sur la page sources.
+
+Tout cela existe en français **et** en arabe : `js/data.js` et `js/data.ar.js` ont exactement la même structure (voir plus haut).
+
+Document d'analyse à jour au 14 septembre 2026. Le site ne recommande aucun vote.

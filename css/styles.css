@@ -528,3 +528,58 @@ strong { color: var(--text); font-weight: 600; }
 .question-label input[type="checkbox"] { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--accent); flex-shrink: 0; cursor: pointer; }
 .questions-list li.answered { border-color: var(--dot-3); background: color-mix(in srgb, var(--dot-3) 8%, var(--surface)); }
 .questions-list li.answered .question-label span { color: var(--text-muted); text-decoration: line-through; text-decoration-color: var(--text-faint); }
+
+/* ---- Mise à jour du 14 septembre 2026 : nouveaux blocs de contenu ---- */
+
+/* Verdict éditorial en tête de fiche parti */
+.party-summary {
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: var(--text);
+  border-inline-start: 3px solid var(--party-accent, var(--accent));
+  padding-inline-start: 16px;
+  margin-block: 1.4em;
+}
+
+/* Slogan + date de présentation du programme */
+.party-meta { font-size: 0.9rem; color: var(--text-muted); }
+
+/* Repères factuels du parti, en puces */
+.identity-list { margin: 1em 0; padding-inline-start: 1.2em; }
+.identity-list li { margin-bottom: 0.4em; line-height: 1.55; }
+
+/* Lien vers le programme officiel du parti */
+.program-link {
+  display: inline-block;
+  font-weight: 600;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--party-accent, var(--accent));
+}
+.program-link:hover { background: var(--bg-alt); }
+
+/* Compte dépenses/recettes (aujourd'hui, seul le PPS en publie un) */
+.budget-block {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-block: 1.6em;
+  background: var(--bg-alt);
+}
+.budget-block h3 { margin-top: 0; }
+.budget-rows { display: grid; gap: 10px; margin-bottom: 1em; }
+.budget-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.budget-row strong { color: var(--accent-3); font-size: 1.1rem; white-space: nowrap; }
+
+/* Cartes « Nouveautés de cette mise à jour » (accueil) */
+.update-card { border-top: 3px solid var(--accent-2); }
+.update-card .cat-tag { margin-bottom: 8px; }

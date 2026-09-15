@@ -125,6 +125,15 @@
       avantHost.appendChild(card);
     });
 
+    const updHost = $("#updatesList");
+    if (updHost && typeof UPDATES !== "undefined" && UPDATES) {
+      UPDATES.items.forEach((u) => {
+        const card = el("div", { class: "card update-card" });
+        card.innerHTML = `<span class="cat-tag">${u.party}</span><h4>${u.title}</h4><p>${u.body}</p>`;
+        updHost.appendChild(card);
+      });
+    }
+
     const navHost = $("#navCards");
     UI.home.navCards.forEach((c, i) => {
       const a = el("a", { class: "nav-card", attrs: { href: c.href } });
@@ -179,15 +188,18 @@
     CONTEXT.economieNuances.forEach((t) => nuancesHost.appendChild(el("li", { html: t })));
 
     $("#emploiCallout").innerHTML =
-      "<p>" + CONTEXT.emploi.intro + "</p><p>" + CONTEXT.emploi.central + "</p><p>" + CONTEXT.emploi.jeunes +
+      "<p>" + CONTEXT.emploi.intro + "</p>" +
+      (CONTEXT.emploi.calloutTitle ? `<p><strong>${CONTEXT.emploi.calloutTitle}</strong></p>` : "") +
+      "<p>" + CONTEXT.emploi.central +
       ` <a href="axe.html?id=1">${UI.contexte.voirAxeEmploi}</a></p>`;
 
     tilesInto("#socialGrid", CONTEXT.social);
 
     $("#retraitesCallout").innerHTML =
       "<p>" + CONTEXT.retraites.situation + "</p><ul class='note-list' style='margin-top:10px'>" +
-      CONTEXT.retraites.chiffres.map((c) => "<li>" + c + "</li>").join("") +
-      `</ul><p><a href="axe.html?id=3">${UI.contexte.voirAxeRetraites}</a></p>`;
+      CONTEXT.retraites.chiffres.map((c) => "<li>" + c + "</li>").join("") + "</ul>" +
+      (CONTEXT.retraites.enjeu ? "<p>" + CONTEXT.retraites.enjeu + "</p>" : "") +
+      `<p><a href="axe.html?id=3">${UI.contexte.voirAxeRetraites}</a></p>`;
 
     $("#eauNote").innerHTML = CONTEXT.eauNote + ` <a href="axe.html?id=6">${UI.contexte.voirAxeEau}</a>`;
 
@@ -233,7 +245,7 @@
       } else {
         let dots = `<div class="mini-dots">`;
         CRITERIA.forEach((c) => {
-          const lvl = scoreLevel(p.scores[c.key]);
+          const lvl = scoreLevel((p.scores || {})[c.key]);
           dots += `<span class="dot ${lvl > 0 ? "lvl-" + lvl : ""}" title="${c.label} : ${LEVEL_LABELS[lvl]}"></span>`;
         });
         dots += `</div>`;
@@ -247,11 +259,28 @@
     breadcrumb("#breadcrumb", [{ href: "index.html", label: UI.crumbHome }, { label: UI.nav.partis }]);
     renderCategoryFilters();
     renderPartiesGrid();
+
+    const otherHost = $("#otherParties");
+    if (otherHost && typeof OTHER_PARTIES !== "undefined" && OTHER_PARTIES) {
+      otherHost.innerHTML = `<h2>${OTHER_PARTIES.title}</h2><p>${OTHER_PARTIES.body}</p>`;
+    }
   }
 
   /* ============================================================
      PAGE: parti.html (détail — lit ?id=)
      ============================================================ */
+  function renderBudget(b) {
+    let html = `<div class="budget-block"><h3>${b.title}</h3><div class="budget-rows">`;
+    b.rows.forEach((r) => {
+      html += `<div class="budget-row"><span>${r.label}</span><strong>${r.value}</strong></div>`;
+    });
+    html += `</div>`;
+    if (b.spending) html += `<p><strong>${UI.parti.budgetSpendingLabel}</strong> ${b.spending}</p>`;
+    if (b.revenue) html += `<p><strong>${UI.parti.budgetRevenueLabel}</strong> ${b.revenue}</p>`;
+    if (b.note) html += `<p class="table-note">${b.note}</p>`;
+    return html + `</div>`;
+  }
+
   function renderMeasureList(measures) {
     let html = "";
     Object.entries(measures).forEach(([section, items]) => {
@@ -296,26 +325,44 @@
         <span class="seats">${p.seats2021} ${UI.seatsSuffix}${p.leader ? " · " + p.leader : ""}${p.symbol ? " · " + UI.symbolLabel + " : " + p.symbol : ""}</span>
       </div>
     </div>`;
-    html += `<p>${p.identity}</p>`;
+    if (p.summary) html += `<p class="party-summary">${p.summary}</p>`;
+
+    const meta = [];
+    if (p.slogan) meta.push(`<strong>${UI.parti.sloganLabel}</strong> « ${p.slogan} »`);
+    if (p.programDate) meta.push(`<strong>${UI.parti.programDateLabel}</strong> ${p.programDate}`);
+    if (meta.length) html += `<p class="party-meta">${meta.join(" · ")}</p>`;
+
+    if (p.identity && p.identity.length) {
+      html += `<ul class="identity-list">${p.identity.map((b) => `<li>${b}</li>`).join("")}</ul>`;
+    }
+
+    if (p.programUrl) {
+      html += `<p><a class="program-link" href="${p.programUrl}" target="_blank" rel="noopener noreferrer">${UI.parti.programLinkLabel}</a></p>`;
+    }
 
     if (p.notDocumented) {
       html += `<div class="callout"><strong>${UI.parti.notAnalyzableLabel}</strong> ${p.notDocumented}</div>`;
     } else {
       if (p.architecture) html += `<p><strong>${UI.parti.architectureLabel}</strong> ${p.architecture}</p>`;
-      if (p.pari) html += `<p><strong>${UI.parti.pariLabel}</strong> ${p.pari}</p>`;
+
+      if (p.budget) html += renderBudget(p.budget);
 
       html += `<h2 style="margin-top:1.8em">${UI.parti.measuresHeading}</h2>`;
       html += renderMeasureList(p.measures);
 
       if (p.strengths) html += `<h2>${UI.parti.strengthsHeading}</h2><div class="strengths">${p.strengths}</div>`;
-      if (p.weaknesses) html += `<h2>${UI.parti.weaknessesHeading}</h2><div class="weaknesses">${p.weaknesses}</div>`;
+      if (p.weaknesses && p.weaknesses.length) {
+        html += `<h2>${UI.parti.weaknessesHeading}</h2><div class="weaknesses"><ul>${p.weaknesses
+          .map((x) => `<li>${x}</li>`)
+          .join("")}</ul></div>`;
+      }
       if (p.structure) html += `<div class="structure-note">« ${p.structure} »</div>`;
 
       html += `<h2>${UI.parti.evalHeading}</h2>`;
       html += `<p class="table-note">${UI.parti.methodNoteBefore} <a href="coherence.html">${UI.parti.methodNoteLink}</a> ${UI.parti.methodNoteAfter}</p>`;
       html += `<div class="score-bars">`;
       CRITERIA.forEach((c) => {
-        const lvl = scoreLevel(p.scores[c.key]);
+        const lvl = scoreLevel((p.scores || {})[c.key]);
         html += `<div class="score-bar-row">
           <div class="score-bar-label"><strong>${c.label}</strong><span>${c.question}</span></div>
           <div class="score-bar-track"><div class="score-bar-fill lvl-${lvl}" style="width:${(lvl / 3) * 100}%"></div></div>
@@ -323,6 +370,7 @@
         </div>`;
       });
       html += `</div>`;
+      if (p.scoreNote) html += `<p class="table-note"><strong>${UI.parti.scoreNoteLabel}</strong> ${p.scoreNote}</p>`;
     }
 
     $("#partyDetail").innerHTML = html;
@@ -358,7 +406,7 @@
     PARTIES.forEach((p) => {
       html += `<tr><td class="party-cell">${partyLink(p)}</td>`;
       CRITERIA.forEach((c) => {
-        const lvl = scoreLevel(p.scores[c.key]);
+        const lvl = scoreLevel((p.scores || {})[c.key]);
         html += `<td><span class="dots" title="${LEVEL_LABELS[lvl]}">${dotsHtml(lvl)}</span></td>`;
       });
       html += "</tr>";
@@ -379,6 +427,19 @@
       card.appendChild(el("p", { html: f.text }));
       findHost.appendChild(card);
     });
+
+    const readNoteHost = $("#readingNote");
+    if (readNoteHost) readNoteHost.innerHTML = SOLIDITY_READING_NOTE;
+
+    const stratHost = $("#strategiesGrid");
+    if (stratHost) {
+      NATIONAL_STRATEGIES.forEach((s) => {
+        const card = el("div", { class: "card" });
+        card.appendChild(el("h4", { text: s.name }));
+        card.appendChild(el("p", { text: s.content }));
+        stratHost.appendChild(card);
+      });
+    }
 
     const structHost = $("#structureGrid");
     PARTIES.filter((p) => p.structure).forEach((p) => {
@@ -529,6 +590,21 @@
     SOURCES.presse.forEach((s) => presseHost.appendChild(el("li", { text: s })));
 
     $("#noteFinale").innerHTML = NOTE_FINALE;
+
+    const limitsHost = $("#closingLimits");
+    if (limitsHost && typeof CLOSING_LIMITS !== "undefined" && CLOSING_LIMITS) {
+      CLOSING_LIMITS.forEach((l) => {
+        const card = el("div", { class: "card" });
+        card.appendChild(el("h4", { text: l.title }));
+        card.appendChild(el("p", { text: l.text }));
+        limitsHost.appendChild(card);
+      });
+    }
+
+    const replyHost = $("#rightOfReply");
+    if (replyHost) {
+      replyHost.innerHTML = `<strong>${UI.sources.rightOfReplyTitle}</strong> ${UI.sources.rightOfReplyBody}`;
+    }
   }
 
   /* ---------------- Router ---------------- */
