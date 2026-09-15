@@ -28,8 +28,62 @@ const SOLIDITY_READING_NOTE = LANG === "ar" ? SOLIDITY_READING_NOTE_AR : SOLIDIT
 const CLOSING_LIMITS = LANG === "ar" ? CLOSING_LIMITS_AR : CLOSING_LIMITS_FR;
 const UI = LANG === "ar" ? UI_AR : UI_FR;
 
+const ELECTION_DATE_ISO = LANG === "ar" ? ELECTION_DATE_ISO_AR : ELECTION_DATE_ISO_FR;
+
 document.documentElement.lang = UI.htmlLang;
 document.documentElement.dir = UI.dir;
+
+/* ===================================================================
+   Date et décompte — calculés à chaque chargement, jamais figés dans
+   le texte : le site affiche toujours la date réelle du jour et le
+   nombre de jours qui restent avant le scrutin.
+   =================================================================== */
+
+const MONTHS = {
+  fr: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+  ar: ["يناير", "فبراير", "مارس", "أبريل", "ماي", "يونيو", "يوليوز", "غشت", "شتنبر", "أكتوبر", "نونبر", "دجنبر"],
+};
+
+function midnight(d) {
+  const c = new Date(d);
+  c.setHours(0, 0, 0, 0);
+  return c;
+}
+
+/** Date du jour, formatée dans la langue active (ex. « 15 septembre 2026 »). */
+function todayLabel() {
+  const d = new Date();
+  return `${d.getDate()} ${MONTHS[LANG][d.getMonth()]} ${d.getFullYear()}`;
+}
+
+/** Jours restants avant le scrutin (négatif une fois le scrutin passé). */
+function daysUntilElection() {
+  const election = midnight(new Date(ELECTION_DATE_ISO + "T00:00:00"));
+  return Math.round((election - midnight(new Date())) / 86400000);
+}
+
+/** Décompte lisible, accordé correctement dans les deux langues. */
+function countdownLabel() {
+  const n = daysUntilElection();
+  if (LANG === "ar") {
+    if (n < 0) return "انتهى الاقتراع";
+    if (n === 0) return "اليوم يوم الاقتراع";
+    if (n === 1) return "غدا يوم الاقتراع";
+    if (n === 2) return "يومان قبل الاقتراع";
+    if (n <= 10) return `${n} أيام قبل الاقتراع`;
+    return `${n} يوما قبل الاقتراع`;
+  }
+  if (n < 0) return "Scrutin passé";
+  if (n === 0) return "Jour du scrutin";
+  if (n === 1) return "J-1 — le scrutin est demain";
+  return `J-${n} avant le scrutin`;
+}
+
+/** Remplace {date} et {countdown} par leur valeur du moment. */
+function fillTokens(text) {
+  return text.replace(/\{date\}/g, todayLabel()).replace(/\{countdown\}/g, countdownLabel());
+}
+window.fillTokens = fillTokens;
 
 /** Applique les chaînes UI aux éléments statiques marqués data-i18n="chemin.vers.la.cle" */
 function applyStaticI18n(root) {
@@ -39,7 +93,7 @@ function applyStaticI18n(root) {
     for (const key of path) {
       value = value && value[key];
     }
-    if (typeof value === "string") el.textContent = value;
+    if (typeof value === "string") el.textContent = fillTokens(value);
   });
 }
 

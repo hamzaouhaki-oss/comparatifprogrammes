@@ -19,9 +19,12 @@
     ];
   }
 
+  /* Rose des vents, volontairement symétrique : une boussole qui pointerait
+     quelque part contredirait la neutralité que revendique le site. */
   const MARK_SVG = `<svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
     <rect width="40" height="40" rx="10" fill="#b3242f"/>
-    <path d="M20.0,9.0 L22.6,16.4 L30.5,16.6 L24.3,21.4 L26.5,28.9 L20.0,24.5 L13.5,28.9 L15.7,21.4 L9.5,16.6 L17.4,16.4 Z" fill="#00693e"/>
+    <path d="M20,4 C21.4,14.4 25.6,18.6 36,20 C25.6,21.4 21.4,25.6 20,36 C18.6,25.6 14.4,21.4 4,20 C14.4,18.6 18.6,14.4 20,4 Z" fill="#00693e"/>
+    <circle cx="20" cy="20" r="2.9" fill="#b3242f"/>
   </svg>`;
 
   function headerHtml(activeKey) {
@@ -66,7 +69,7 @@
           <nav class="footer-nav">${links}</nav>
         </div>
         <div class="footer-bottom">
-          <p>${UI.footerNote}</p>
+          <p>${fillTokens(UI.footerNote)}</p>
           <button class="btn btn-ghost btn-small" id="backToTop">${UI.backToTop}</button>
         </div>
       </div>`;
