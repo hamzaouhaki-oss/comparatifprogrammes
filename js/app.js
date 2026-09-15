@@ -596,7 +596,7 @@
       CLOSING_LIMITS.forEach((l) => {
         const card = el("div", { class: "card" });
         card.appendChild(el("h4", { text: l.title }));
-        card.appendChild(el("p", { text: l.text }));
+        card.appendChild(el("p", { text: fillTokens(l.text) }));
         limitsHost.appendChild(card);
       });
     }

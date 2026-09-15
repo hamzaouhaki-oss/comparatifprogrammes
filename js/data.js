@@ -358,7 +358,7 @@ const PARTIES_FR = [
     strengths: null,
     weaknesses: [
     ],
-    notDocumented: "Programme non documenté publiquement à un niveau permettant l'analyse. Nous préférons le dire plutôt que d'inventer son contenu — ce qui serait la pire forme de partialité.",
+    notDocumented: "Programme non documenté publiquement à un niveau permettant l'analyse. Boussole préfère le dire plutôt que d'inventer son contenu — ce qui serait la pire forme de partialité.",
     scores: null,
     structure: null,
   },
@@ -1073,11 +1073,11 @@ const SOURCES_FR = {
 const AVANT_PROPOS_FR = [
   {
     title: "Tous les partis n'ont pas de programme comparable",
-    text: "Vingt-sept formations concourent et 702 listes ont été déposées. Mais seule une douzaine a publié un programme assez détaillé pour être analysé sérieusement. Ce site le signale à chaque fois, au lieu de combler les trous.",
+    text: "Vingt-sept formations concourent et 702 listes ont été déposées. Mais seule une douzaine a publié un programme assez détaillé pour être analysé sérieusement. Boussole le signale à chaque fois, au lieu de combler les trous.",
   },
   {
     title: "Un beau programme n'est pas une garantie",
-    text: "Un parti peut publier 200 pages très précises et ne rien exécuter. Un autre peut publier dix pages et bien gouverner. Ce site évalue la qualité de l'offre écrite — pas la valeur morale des partis, ni leur capacité réelle à gouverner une fois au pouvoir.",
+    text: "Un parti peut publier 200 pages très précises et ne rien exécuter. Un autre peut publier dix pages et bien gouverner. Boussole évalue la qualité de l'offre écrite — pas la valeur morale des partis, ni leur capacité réelle à gouverner une fois au pouvoir.",
   },
   {
     title: "Au Maroc, les partis ne décident pas de tout",
@@ -1088,7 +1088,7 @@ const AVANT_PROPOS_FR = [
 const CLOSING_LIMITS_FR = [
   {
     title: "La campagne n'est pas finie",
-    text: "Elle court jusqu'au 22 septembre à minuit. Des programmes peuvent encore être complétés, des chiffres révisés, des positions précisées. Ce site est à jour au 14 septembre 2026.",
+    text: "Elle court jusqu'au 22 septembre à minuit. Des programmes peuvent encore être complétés, des chiffres révisés, des positions précisées. Boussole est à jour au {date}.",
   },
   {
     title: "Aucun programme ne sera appliqué tel quel",
@@ -1096,7 +1096,7 @@ const CLOSING_LIMITS_FR = [
   },
 ];
 
-const NOTE_FINALE_FR = "Ce site ne vous dit pas pour qui voter, et c'est délibéré. Il vous donne une grille de lecture, des chiffres de référence et des questions à poser.";
+const NOTE_FINALE_FR = "Boussole ne vous dit pas pour qui voter, et c'est délibéré. Elle vous donne une grille de lecture, des chiffres de référence et des questions à poser.";
 
 /* ===================================================================
    Textes d'interface (chrome, libellés, titres statiques des pages)
@@ -1137,11 +1137,11 @@ const UI_FR = {
   home: {
     eyebrow: "À jour au {date} — {countdown}",
     h1: "Élections législatives du 23 septembre 2026",
-    lead: "Que proposent les partis marocains ? Leurs promesses tiennent-elles debout ? Et qui propose quoi sur les sujets qui comptent vraiment pour les cinq prochaines années ? Ce site répond aux trois questions, sans dire pour qui voter.",
+    lead: "Que proposent les partis marocains ? Leurs promesses tiennent-elles debout ? Et qui propose quoi sur les sujets qui comptent vraiment pour les cinq prochaines années ? Boussole répond aux trois questions, sans dire pour qui voter.",
     exploreBtn: "Explorer les partis",
     compareBtn: "Comparer par thème",
     updatesHeading: "Nouveautés de cette mise à jour",
-    howToReadHeading: "Comment lire ce document",
+    howToReadHeading: "Comment lire ce portail",
     howToReadIntro: "Trois avertissements de méthode, importants avant de lire la suite.",
     exploreHeading: "Explorer l'analyse",
     exploreIntro: "Six entrées, selon ce que vous cherchez.",
